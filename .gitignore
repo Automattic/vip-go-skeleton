@@ -3,3 +3,6 @@ plugins/log-deprecated-notices
 plugins/monster-widget
 plugins/query-monitor
 plugins/user-switching
+
+# Uploads directory
+uploads
