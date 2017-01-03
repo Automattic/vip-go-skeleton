@@ -6,3 +6,6 @@ plugins/user-switching
 
 # Uploads directory
 uploads
+
+# mu-plugins; these are managed at the platform-level
+mu-plugins
