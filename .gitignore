@@ -9,3 +9,7 @@ uploads
 
 # mu-plugins; these are managed at the platform-level
 mu-plugins
+
+# drop-ins
+object-cache.php
+db.php
