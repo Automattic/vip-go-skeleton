@@ -1,0 +1,8 @@
+# Add files or patterns to exclude from the built branch here.
+# Consult the "INCLUDE/EXCLUDE PATTERN RULES" section of the rsync manual for
+# supported patterns.
+# https://download.samba.org/pub/rsync/rsync.html
+#
+# Note: Excluding "ci" will cause your branch to fail.
+
+.git
