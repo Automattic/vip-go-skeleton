@@ -3,6 +3,13 @@
 # Deploy your branch on VIP Go.
 #
 
+# This script uses various Circle CI and Travis CI environment 
+# variables, Circle prefix their environment variables with 
+# `CIRCLE_` and Travis with `TRAVIS_`. 
+# Documentation:
+# https://circleci.com/docs/1.0/environment-variables/
+# https://docs.travis-ci.com/user/environment-variables/
+
 set -ex
 
 DEPLOY_SUFFIX="-built"
