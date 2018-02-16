@@ -76,7 +76,7 @@ if ! command -v 'rsync'; then
 fi
 
 echo "Syncing files... quietly"
-rsync -a "$SRC_DIR/" "$BUILD_DIR" --exclude-from "$SRC_DIR/ci/deploy-exclude.txt"
+rsync --cvs-exclude -a "$SRC_DIR/" "$BUILD_DIR" --exclude-from "$SRC_DIR/ci/deploy-exclude.txt"
 
 # Add changed files
 git add -A .
