@@ -22,9 +22,8 @@ jobs:
       - image: circleci/node:6.11-stretch
 
     branches:
-      only:
-        # Whitelist branches to build for.
-        - master
+      # DEPLOY: Don't build from a branch with the `-built` suffix, to
+      # prevent endless loops of deploy scripts.
       ignore:
         - /^.*(?<!-built)$/
     steps:
@@ -51,7 +50,8 @@ language: php
 
 sudo: false # Use modern Travis builds – http://docs.travis-ci.com/user/migrating-from-legacy/
 
-# Branch should not end with "-built"
+# DEPLOY: This "ignore" directive travis from processing branches with a -built
+# suffix, thus avoiding endless loops
 if: branch =~ ^.*(?<!-built)$
 
 git:

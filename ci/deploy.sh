@@ -39,14 +39,6 @@ REPO_SSH_URL="git@github.com:${REPO_SLUG}"
 COMMIT_SHA=${CIRCLE_SHA1:-$TRAVIS_COMMIT}
 DEPLOY_BRANCH="${BRANCH}${DEPLOY_SUFFIX}"
 
-# You can also exclude this on Travis with:
-# if: branch =~ ^.*(?<!-built)$
-# …or on CircleCI with:
-# jobs:
-#  build:
-#    branches:
-#      ignore:
-#        - /^.*(?<!-built)$/
 if [[ "$BRANCH" == *${DEPLOY_SUFFIX} ]]; then
 	echo "WARNING: Attempting to build from branch '${BRANCH}' to deploy '${DEPLOY_BRANCH}', seems like recursion so aborting."
 	exit 0
