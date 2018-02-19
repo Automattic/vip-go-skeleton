@@ -54,17 +54,22 @@ sudo: false # Use modern Travis builds – http://docs.travis-ci.com/user/migrat
 # suffix, thus avoiding endless loops
 if: branch =~ ^.*(?<!-built)$
 
-git:
-  submodules: false
 
-php:
-  - 7.1
+# DEPLOY: Example configure build steps:
+# before_script:
+# - run: npm install
+# - run: npm run build
 
-script:
-  - find . -name \*.php -print0 | xargs -0 -n 1 -P 4 php -d display_errors=stderr -l > /dev/null
+# Any tests you have will go in the `script` step, consult the
+# Travis CI Documentation for details.
 
-notifications: false
-
-after_success:
+# DEPLOY: After everything else has run, run the deploy script.
+# N.B. If you define no tests and/or no `script` directives, then
+# each Travis build will appear to fail, although the deploy
+# will succeed.
+# If you want to only run the deploy script when tests pass, use
+# `after_success` instead, you will need to add a `script`
+# directive with some tests if you want to do this :)
+after_script:
   - ci/deploy.sh
 ```
