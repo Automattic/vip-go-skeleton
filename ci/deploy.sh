@@ -46,16 +46,8 @@ fi
 
 echo "Deploying $BRANCH to $DEPLOY_BRANCH"
 
-# By default, this script will use the name and email of the
-# author of the current commit, and use those when deploying
-# the built code. If you want to override this, you can set
-# the `DEPLOY_GIT_USER` and/or `DEPLOY_GIT_EMAIL` environment
-# variables. Documentation links for environment variables on
-# Circle CI and Travis CI are above.
 COMMIT_USER_NAME="$( git log --format=%ce -n 1 $COMMIT_SHA )"
 COMMIT_USER_EMAIL="$( git log --format=%cn -n 1 $COMMIT_SHA )"
-GIT_USER="${DEPLOY_GIT_USER:-$COMMIT_USER_NAME}"
-GIT_EMAIL="${DEPLOY_GIT_EMAIL:-$COMMIT_USER_EMAIL}"
 
 git clone "$REPO_SSH_URL" "$BUILD_DIR"
 cd "$BUILD_DIR"
@@ -95,7 +87,7 @@ fi
 MESSAGE=$( printf 'Build changes from %s\n\n%s' "${COMMIT_SHA}" "${CIRCLE_BUILD_URL}" )
 # Set the Author to the commit (expected to be a client dev) and the committer
 # will be set to the default Git user for this CI system
-git commit --author="${GIT_USER} <${GIT_EMAIL}>" -m "$MESSAGE"
+git commit --author="${COMMIT_USER_NAME} <${COMMIT_USER_EMAIL}>" -m "$MESSAGE"
 
 # Push it (push it real good).
 git push origin "$DEPLOY_BRANCH"
