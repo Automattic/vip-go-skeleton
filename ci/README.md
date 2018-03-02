@@ -73,3 +73,7 @@ if: branch =~ ^.*(?<!-built)$
 after_script:
   - ci/deploy.sh
 ```
+
+## Credits
+
+Inspiration (and some code) taken from [Human Made's VIP Go Builder](https://github.com/humanmade/vip-go-builder/), thank you!
