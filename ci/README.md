@@ -1,5 +1,7 @@
 # VIP Go CI Scripts
 
+This directory is not deployed to your VIP site.
+
 ## `deploy.sh` and `deploy-exclude.txt`
 
 Scripts designed to facilitate building your Javascript and CSS
