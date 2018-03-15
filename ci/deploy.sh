@@ -46,10 +46,7 @@ if [[ -d "$BUILD_DIR" ]]; then
 	exit 1
 fi
 
-# The hardcoded *-built check in this conditional allows us
-# to run test builds for circle and travis without running
-# into infinitely recursive builds from each others builds.
-if [[ "${BRANCH}" == *${DEPLOY_SUFFIX} ]] ||  [[ "${BRANCH}" == *-built ]]; then
+if [[ "${BRANCH}" == *${DEPLOY_SUFFIX} ]]; then
 	echo "WARNING: Attempting to build from branch '${BRANCH}' to deploy '${DEPLOY_BRANCH}', seems like recursion so aborting."
 	exit 0
 fi
