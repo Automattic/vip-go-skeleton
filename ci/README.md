@@ -7,6 +7,8 @@ on either [Travis CI](https://travis-ci.com) or [Circle CI](https://circleci.com
 
 See our documentation here: (NEEDS LINK, Ed)
 
+### [Circle CI](https://circleci.com/)
+
 Sample Circle CI config, put into `.circleci/config.yml`:
 
 ``` yml
@@ -43,7 +45,14 @@ jobs:
           command: ci/deploy.sh
 ```
 
-Sample Travis CI config, put into `.travis.yml`:
+### [Travis CI](https://travis-ci.com)
+
+1. Add the config to your repository
+2. Create and add a deploy key to your repository settings on Travis
+
+#### Sample Travis CI config
+
+Put this into `.travis.yml`:
 
 ``` yml
 language: php
@@ -73,6 +82,14 @@ if: branch =~ ^.*(?<!-built)$
 after_script:
   - ci/deploy.sh
 ```
+
+#### Creating and adding a deploy key
+
+Create a new public private key pair (see "Generating a new SSH key" section, you don't need to add it to your agent); [GitHub documentation on creating a new key pair](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key).
+
+Add the public portion of the key as a deploy key on your GitHub repository; [GitHub documentation on deploy keys](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys).
+
+Set the private portion of the key as a repository variable in the Travis settings. You will need to replace newlines with \n and surround it with double quotes, e.g. "THIS\nIS\A\KEY\nABC\n123\n"; [Travis documentation on repository variables in settings](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
 
 ## Credits
 
