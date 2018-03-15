@@ -12,5 +12,6 @@
  * - The WordPress.com VIP Team
  **/
 
- // Just a change 1
- // Just another change 2
+// Just a change 1
+// Just another change 2
+// Further change
