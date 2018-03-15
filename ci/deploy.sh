@@ -12,7 +12,11 @@
 
 set -ex
 
+# The deploy suffix flexibility is mainly here to allow
+# us to test Circle and Travis builds simultaneously on
+# the https://github.com/Automattic/vip-go-skeleton/ repo.
 DEPLOY_SUFFIX="${VIP_DEPLOY_SUFFIX:--built}"
+
 BRANCH="${CIRCLE_BRANCH:-$TRAVIS_BRANCH}"
 
 SRC_DIR="${TRAVIS_BUILD_DIR:-$PWD}"
@@ -48,6 +52,11 @@ fi
 
 if [[ "${BRANCH}" == *${DEPLOY_SUFFIX} ]]; then
 	echo "WARNING: Attempting to build from branch '${BRANCH}' to deploy '${DEPLOY_BRANCH}', seems like recursion so aborting."
+	exit 1
+fi
+
+if [[ -n $TRAVIS ]] && [[ -n $TRAVIS_PULL_REQUEST ]];; then
+	echo "Aborting a build from a pull request, only build from merges to the branch"
 	exit 0
 fi
 
