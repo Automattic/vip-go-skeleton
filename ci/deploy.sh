@@ -55,7 +55,7 @@ if [[ "${BRANCH}" == *${DEPLOY_SUFFIX} ]]; then
 	exit 1
 fi
 
-if [[ -n $TRAVIS ]] && [[ -n $TRAVIS_PULL_REQUEST ]];; then
+if [[ -n $TRAVIS ]] && [[ -n $TRAVIS_PULL_REQUEST ]]; then
 	echo "Aborting a build from a pull request, only build from merges to the branch"
 	exit 0
 fi
