@@ -15,4 +15,5 @@ script: echo "No tests"
 # pass, use `after_success` instead, you will need to add a
 # `script` directive with some tests if you want to do this :)
 after_script:
+  - ci/deploy-travis-prepare.sh
   - ci/deploy.sh
