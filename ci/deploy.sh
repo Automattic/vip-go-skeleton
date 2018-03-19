@@ -39,23 +39,33 @@ COMMIT_COMMITTER_EMAIL="$( git log --format=%ce -n 1 ${COMMIT_SHA} )"
 # Run some checks
 # ---------------
 
+if [[ -n $TRAVIS ]] && [[ -n $CIRCLECI ]]; then
+	echo "ERROR: this script requires either Circle CI or Travis CI"
+	echo "You will need to amend the setup above to set the required variables from the information specific to your CI service or tool."
+	exit 1
+fi
+
 if [[ -z "${BRANCH}" ]]; then
-	echo "No branch specified!"
+	echo "ERROR: No branch specified!"
+	echo "This variable should be set by Travis CI and Circle CI, if you consistently experience errors please check with WordPress.com VIP support."
 	exit 1
 fi
 
 if [[ -d "$BUILD_DIR" ]]; then
-	echo "WARNING: ${BUILD_DIR} already exists."
+	echo "ERROR: ${BUILD_DIR} already exists."
+	echo "This should not happen, if you consistently experience errors please check with WordPress.com VIP support."
 	exit 1
 fi
 
 if [[ "${BRANCH}" == *${DEPLOY_SUFFIX} ]]; then
-	echo "WARNING: Attempting to build from branch '${BRANCH}' to deploy '${DEPLOY_BRANCH}', seems like recursion so aborting."
-	exit 1
+	echo "NOTICE: Attempting to build from branch '${BRANCH}' to deploy '${DEPLOY_BRANCH}', seems like recursion so aborting."
+	echo "This is a protective measure, no action is required."
+	exit 0
 fi
 
 if [[ -n $TRAVIS ]] && [ $TRAVIS_PULL_REQUEST != 'false' ]; then
-	echo "Aborting a build to '${DEPLOY_BRANCH}' from a pull request on '${BRANCH}', only build from merges directly to the branch"
+	echo "NOTICE: Aborting a build to '${DEPLOY_BRANCH}' from a pull request on '${BRANCH}', only build from merges directly to the branch"
+	echo "This is a protective measure, no action is required."
 	exit 0
 fi
 
@@ -98,7 +108,7 @@ git config user.email "${COMMIT_COMMITTER_EMAIL}"
 git add -A .
 
 if [ -z "$(git status --porcelain)" ]; then
-	echo "No changes to deploy"
+	echo "NOTICE: No changes to deploy"
 	exit 0
 fi
 
