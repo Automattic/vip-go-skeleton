@@ -12,6 +12,15 @@ This directory contains various scripts to handle a build process for the VIP Go
 
 The CI directory is not deployed to your VIP site, read more about VIP code structure in our [documentation about your VIP codebase](https://vip.wordpress.com/documentation/vip-go/understanding-your-vip-go-codebase/).
 
+## Getting started – unlaunched site
+
+For unlaunched sites it's possible to proceed a little more carefully. Here are some suggested steps:
+
+1. Get the build script set up for your `master` branch on the CI service of your choice, the script and documentation here support Circle CI and Travis CI
+2. Ensure that the built code on `master-built` is as you expect
+3. Contact VIP to have us switch your site to deploy from `master-built`
+4. Deploy a test commit, and check the code is correct and that the site is working as expected
+
 ## `deploy.sh` and `deploy-exclude.txt`
 
 Scripts designed to facilitate building your Javascript and CSS
