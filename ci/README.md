@@ -14,12 +14,14 @@ The CI directory is not deployed to your VIP site, read more about VIP code stru
 
 ## Getting started – unlaunched site
 
-For unlaunched sites it's possible to proceed a little more carefully. Here are some suggested steps:
+For unlaunched sites, here are the steps to follow:
 
 1. Get the build script set up for your `master` branch on the CI service of your choice, the script and documentation here support Circle CI and Travis CI
 2. Ensure that the built code on `master-built` is as you expect
 3. Contact VIP to have us switch your site to deploy from `master-built`
 4. Deploy a test commit, and check the code is correct and that the site is working as expected
+
+The process will be similar for launched sites, but we recommend testing on a non-production environment and branch first (i.e. not `master`).
 
 ## `deploy.sh` and `deploy-exclude.txt`
 
