@@ -34,8 +34,8 @@ See our documentation here: (NEEDS LINK, Ed)
 
 To have this run on Circle CI, you will need to:
 
-* Read the [Circle CI getting started documentation](https://circleci.com/docs/1.0/getting-started/)
-* Add a Circle CI config to your repository if you don't have one, or tweak the one you have
+* Read the [Circle CI getting started documentation](https://circleci.com/docs/1.0/getting-started/) (don't add the suggested Circle CI config at this point)
+* Add the Circle CI config to your repository (copy the config below) if you don't have one. If you already have a config, you'll need to tweak it to add the section commented with "Configure build steps" and then the section commented with "Run the deploy"
 * Create a [GitHub machine user](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users) (if you don't already have one for your team)
 * Grant your machine user access to the site GitHub repository
 * Use the Circle CI UI to create and add a user key for your machine user
