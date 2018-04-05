@@ -38,7 +38,7 @@ To have this run on Circle CI, you will need to:
 * Add the Circle CI config to your repository (copy the config below) if you don't have one. If you already have a config, you'll need to tweak it to add the section commented with "Configure build steps" and then the section commented with "Run the deploy"
 * Create a [GitHub machine user](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users) (if you don't already have one for your team)
 * Grant your machine user access to the site GitHub repository
-* Use the Circle CI UI to create and add a user key for your machine user
+* Use the Circle CI UI to [create and add a user key](https://circleci.com/docs/1.0/github-security-ssh-keys/#machine-user-keys) for your machine user
 
 #### Sample Circle CI config
 
