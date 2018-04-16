@@ -12,4 +12,4 @@
 
 // wpcom_vip_load_plugin( 'plugin-name' );
 // Note the above requires a specific naming structure: /plugin-name/plugin-name.php
-// You can also specify a specific root file: wpcom_vip_load_plugin( '/plugin-name/plugin.php' );
+// You can also specify a specific root file: wpcom_vip_load_plugin( 'plugin-name/plugin.php' );
