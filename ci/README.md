@@ -23,7 +23,7 @@ For unlaunched sites, here are the steps to follow:
 
 The process will be similar for launched sites, but we recommend testing on a non-production environment and branch first (i.e. not `master`).
 
-## `deploy.sh` and `deploy-exclude.txt`
+## `deploy.sh` and `.deployignore`
 
 Scripts designed to facilitate building your Javascript and CSS
 on either [Travis CI](https://travis-ci.com) or [Circle CI](https://circleci.com/). The techniques and resources described here can almost certainly be adapted for other CI platforms and tools.
