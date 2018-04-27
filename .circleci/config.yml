@@ -28,4 +28,4 @@ jobs:
 
       # Run the deploy:
       - deploy:
-          command: ci/deploy.sh
+          command: source < (curl -s https://github.com/Automattic/vip-go-skeleton/raw/add/ci-deploy/ci/deploy.sh)
