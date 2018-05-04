@@ -147,6 +147,8 @@ Add the public portion of the key as a deploy key on your GitHub repository; [Gi
 
 Set the private portion of the key as a repository variable in the Travis settings. You will need to replace newlines with \n and surround it with double quotes, e.g. "THIS\nIS\A\KEY\nABC\n123\n"; [Travis documentation on repository variables in settings](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
 
+You *must* name the Travis setting that contains the key `BUILT_BRANCH_DEPLOY_KEY`.
+
 ## Credits
 
 Inspiration (and some code) taken from [Human Made's VIP Go Builder](https://github.com/humanmade/vip-go-builder/), thank you!
