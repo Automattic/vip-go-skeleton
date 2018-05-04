@@ -3,51 +3,40 @@
 This document covers the steps to provide a build process for the VIP Go hosting platform on [WordPress.com VIP](https://vip.wordpress.com/). This build process should only be used for CSS, JS, and static resources, not for PHP (e.g. no `composer install`), or SVG files. The following example describes how a production site is developed and deployed using a flow which includes a build step:
 
 1. Branch from `master` for a new feature
-2. Develop with only your source code committed to your new branch (at this point you won't commit NPM installed modules, nor transpiled code, nor compressed images, etc)
-3. Create a pull request from your new branch onto `master`
-4. VIP review and approve the pull request
-5. You merge the pull request
-6. Your build steps run on the CI service
-7. Our build script commits and pushes the build code to the `master-built` branch (and from there it is immediately deployed to your production site)
+2. Develop cleanly with only your source code committed to your new branch (at this point you won't commit NPM installed modules, nor transpiled code, nor compressed images, etc)
+3. Create a pull request, get it reviewed and approved, then merge to `master`
+4. Your build steps run on the CI service
+5. Our build script commits and pushes the build code to the `master-built` branch (and from there it is immediately deployed to your production site)
 
-The CI directory is not deployed to your VIP site, read more about VIP code structure in our [documentation about your VIP codebase](https://vip.wordpress.com/documentation/vip-go/understanding-your-vip-go-codebase/).
+Note: The CI directory is not deployed to your VIP site, read more about VIP code structure in our [documentation about your VIP codebase](https://vip.wordpress.com/documentation/vip-go/understanding-your-vip-go-codebase/).
 
-## Getting started – un-launched site
-
-For un-launched sites, here are the steps to follow:
-
-1. Get the build script set up for your `master` branch on the CI service of your choice, the script and documentation here support Circle CI and Travis CI
-2. Ensure that the built code on `master-built` is as you expect
-3. Contact VIP to have us switch your site to deploy from `master-built`
-4. Deploy a test commit, and check the code is correct and that the site is working as expected
-
-The process will be similar for launched sites, but we recommend testing on a non-production environment and branch first (i.e. not `master`).
-
-## `deploy.sh` and `.deployignore`
-
-Scripts designed to facilitate building your Javascript and CSS
-on either [Travis CI](https://travis-ci.com) or [Circle CI](https://circleci.com/). The techniques and resources described here can almost certainly be adapted for other CI platforms and tools.
-
-See our documentation here: (NEEDS LINK, Ed)
+We have specific instructions below for Travis CI or Circle CI.
 
 ### [Circle CI](https://circleci.com/)
 
-To have this run on Circle CI, you will need to:
+It's a good idea to read the [Circle CI getting started documentation](https://circleci.com/docs/1.0/getting-started/) (but don't add the suggested Circle CI config at this point).
 
-* Read the [Circle CI getting started documentation](https://circleci.com/docs/1.0/getting-started/) (don't add the suggested Circle CI config at this point)
-* Add the Circle CI config to your repository (copy the config below) if you don't have one. If you already have a config, you'll need to tweak it to add the section commented with "Configure build steps" and then the section commented with "Run the deploy."
-* Add your deploy script to the repository (at ci/deploy.sh in the sample config below). If you don't have one, use the sample script in this repo.
-* Create a [GitHub machine user](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users) (if you don't already have one for your team)
-* Grant your machine user access to the site GitHub repository
-* Use the Circle CI UI to [create and add a user key](https://circleci.com/docs/1.0/github-security-ssh-keys/#machine-user-keys) for your machine user
+The following instructions reference the `master` and `master-built` branch, but can be adapted for other branches, e.g. `develop` and `develop-built`.
+
+1. Create or adapt a config for Circle CI:
+	* If you have no Circle CI config in your repository, copy the config below to `.circleci/config.yml`; you will need to add the build command(s) you're using in the section under "@TODO: Configure build steps"
+	* If you already have a config, you'll need to tweak it to add the build command(s), referencing the section in our example config commented with "@TODO: Configure build steps" and then the section commented with "Run the deploy"
+2. Ensure you have a machine user, this is a regular GitHub user account which is used purely for scripted functions, e.g. used by Circle CI to commit and push the built code (GitHub call this user a ["machine user"](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users)):
+  * If you have no dedicated "machine user" account, create a new GitHub account, named appropriately.
+	* If you already have a machine user for your team, then use that account for the following steps.
+3. Grant your machine user access to the site GitHub repository
+4. Log in to the Circle CI to create and add user keys for your machine user ([Circle CI docs on creating and adding a user key](https://circleci.com/docs/1.0/github-security-ssh-keys/#machine-user-keys)).
+5. Merge a PR to your `master` branch… it should be built by Circle CI, committed to your `master-built` branch, and pushed up to GitHub (verify the branch now exists on GitHub and contains the changes you made)
+6. Contact VIP to have your environment changed to deploy from `master-built`
+7. …that's it!
 
 #### Sample Circle CI config
 
-If you're not yet using Circle CI, drop the config below into your project and everything should just work. Put the config in `/.circleci/config.yml`.
+See above for detailed instructions on using this sample config.
 
-If you are already using Circle CI, look for the lines preceded by a `# Required:` comment and integrate them into your config.
+If you're not yet using Circle CI, drop the config below into your project and everything should just work. Put the following into `/.circleci/config.yml`:l
 
-Important: Remember to configure your build steps below, see "Configure build steps:"
+Important: Remember to configure your build steps below, see "@TODO: Configure build steps".
 
 ``` yml
 version: 2
@@ -71,7 +60,7 @@ jobs:
     steps:
       - checkout
 
-      # Configure build steps:
+      # @TODO: Configure build steps
       # - run: npm install
       # - run: npm run build
       #
@@ -81,28 +70,45 @@ jobs:
       #   command: npm run build-thing
 
       # Run the deploy:
-      # Required: If you're amended an existing config, the following
-      # two lines are required
       - deploy:
-          command: ci/deploy.sh
+          command: bash <(curl -D /tmp/headers-1.txt -s "https://raw.githubusercontent.com/Automattic/vip-go-build/master/deploy.sh")
 ```
 
 ### [Travis CI](https://travis-ci.com)
 
-* Read the [Travis CI getting started documentation](https://docs.travis-ci.com/user/getting-started/)
-* Add a Travis CI config to your repository if you don't have one, or tweak the one you have.
-* * Add your deploy script to the repository (at ci/deploy.sh in the sample config below). If you don't have one, use the sample script in this repo.
-* Create a [GitHub machine user](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users) (if you don't already have one for your team)
-* Use the commandline on your local machine to create a public private key pair ([documentation](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/))
-* Set the key pair up as a deploy key with write permissions on the GitHub repository ([documentation](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys))
-* Add the private key as a setting on your Travis repository (see "Creating and adding a deploy key" below)
+It's a good idea to read the [Travis CI getting started documentation](https://docs.travis-ci.com/user/getting-started/), but don't add the Travis CI config at this point.
+
+1. Create or adapt a config for Travis CI:
+	* If you have no Circle CI config in your repository, copy the config below to `.travis.yml`; you will need to add the build command(s) you're using in the `before_script` section under "@TODO: Configure build steps"
+	* If you already have a config, you'll need to tweak it to add the build command(s), referencing the `before_script` section in our example config commented with "@TODO: Configure build steps" and also add the `after_script` section commented with "Run the deploy"
+2. Ensure you have a machine user, this is a regular GitHub user account which is used purely for scripted functions, e.g. used by Circle CI to commit and push the built code (GitHub call this user a ["machine user"](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users)):
+  * If you have no dedicated "machine user" account, create a new GitHub account, named appropriately.
+	* If you already have a machine user for your team, then use that account for the following steps.
+3. Setup a key pair for your machine user
+  * Use the commandline on your local machine to create a public private key pair ([documentation](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/))
+  * Set the key pair up as a deploy key with write permissions on the GitHub repository ([documentation](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys))
+  * Add the private key as a setting on your Travis repository (see "Adding a deploy key in repository settings on Travis CI" below)
+4. Merge a PR to your `master` branch… it should be built by Circle CI, committed to your `master-built` branch, and pushed up to GitHub (verify the branch now exists on GitHub and contains the changes you made)
+5. Contact VIP to have your environment changed to deploy from `master-built`
+6. …that's it!
+
+#### Adding a deploy key as a repository variable on Travis CI
+
+Please read these instructions through before executing the steps.
+
+Add the *public* portion of the key as a deploy key on your GitHub repository; [GitHub documentation on deploy keys](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys).
+
+Set the *private* portion of the key as a repository variable in the Travis settings. You will need to replace newlines with \n and surround it with double quotes, e.g. "THIS\nIS\A\KEY\nABC\n123\n"; [Travis documentation on repository variables in settings](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
+
+You *must* name the Travis setting that contains the key `BUILT_BRANCH_DEPLOY_KEY`.
 
 #### Sample Travis CI config
 
-If you are already using Travis CI, look for the lines preceded by a `# Required:` comment and integrate them into your config.
+See above for detailed instructions on using this sample config.
 
-If you're not yet using Travis CI, drop the config below into your project and everything should just work. Put the following into `/.travis.yml`:
+If you're not yet using Travis CI, drop the config below into your project and everything should just work. Put the following into `/.travis.yml`:l
 
+Important: Remember to configure your build steps below, see "@TODO: Configure build steps".
 
 ``` yml
 language: php
@@ -118,7 +124,7 @@ sudo: false
 if: branch =~ ^.*(?<!-built)$
 
 
-# DEPLOY: Example configure build steps:
+# @TODO: Configure build steps
 # before_script:
 # - run: npm install
 # - run: npm run build
@@ -138,16 +144,6 @@ if: branch =~ ^.*(?<!-built)$
 after_script:
   - ci/deploy.sh
 ```
-
-#### Creating and adding a deploy key
-
-Create a new public private key pair (see "Generating a new SSH key" section, you don't need to add it to your agent); [GitHub documentation on creating a new key pair](https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/#generating-a-new-ssh-key).
-
-Add the public portion of the key as a deploy key on your GitHub repository; [GitHub documentation on deploy keys](https://developer.github.com/v3/guides/managing-deploy-keys/#deploy-keys).
-
-Set the private portion of the key as a repository variable in the Travis settings. You will need to replace newlines with \n and surround it with double quotes, e.g. "THIS\nIS\A\KEY\nABC\n123\n"; [Travis documentation on repository variables in settings](https://docs.travis-ci.com/user/environment-variables/#Defining-Variables-in-Repository-Settings).
-
-You *must* name the Travis setting that contains the key `BUILT_BRANCH_DEPLOY_KEY`.
 
 ## Credits
 
