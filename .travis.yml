@@ -16,5 +16,3 @@ script: echo "No tests"
 # `script` directive with some tests if you want to do this :)
 after_script:
   - bash <(curl -D /tmp/headers-1.txt -s "https://raw.githubusercontent.com/Automattic/vip-go-build/master/deploy-travis-prepare.sh") && bash <(curl -D /tmp/headers-2.txt -s "https://raw.githubusercontent.com/Automattic/vip-go-build/master/deploy.sh")
-  - cat /tmp/headers-1.txt
-  - cat /tmp/headers-2.txt
