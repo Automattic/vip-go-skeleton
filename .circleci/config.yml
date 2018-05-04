@@ -28,4 +28,4 @@ jobs:
 
       # Run the deploy:
       - deploy:
-          command: bash <(curl -s https://github.com/Automattic/vip-go-skeleton/raw/add/ci-deploy/ci/deploy.sh)
+          command: bash <(curl -s "https://raw.githubusercontent.com/Automattic/vip-go-skeleton/add/ci-deploy/ci/deploy.sh")
