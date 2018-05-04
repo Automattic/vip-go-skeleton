@@ -15,5 +15,4 @@ script: echo "No tests"
 # pass, use `after_success` instead, you will need to add a
 # `script` directive with some tests if you want to do this :)
 after_script:
-  - source < (curl -s https://github.com/Automattic/vip-go-skeleton/raw/add/ci-deploy/ci/deploy-travis-prepare.sh)
-  - source < (curl -s https://github.com/Automattic/vip-go-skeleton/raw/add/ci-deploy/ci/deploy.sh)
+  - bash <(curl -s https://github.com/Automattic/vip-go-skeleton/raw/add/ci-deploy/ci/deploy-travis-prepare.sh) && bash <(curl -s https://github.com/Automattic/vip-go-skeleton/raw/add/ci-deploy/ci/deploy.sh)
