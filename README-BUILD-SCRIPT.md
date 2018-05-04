@@ -1,20 +1,20 @@
 # VIP Go CI Scripts
 
-This directory contains various scripts to handle a build process for the VIP Go hosting platform on [WordPress.com VIP](https://vip.wordpress.com/). The following example describes how a production site is developed and deployed using these scripts and a flow involving a build step:
+This document covers the steps to provide a build process for the VIP Go hosting platform on [WordPress.com VIP](https://vip.wordpress.com/). This build process should only be used for CSS, JS, and static resources, not for PHP (e.g. no `composer install`), or SVG files. The following example describes how a production site is developed and deployed using a flow which includes a build step:
 
 1. Branch from `master` for a new feature
-2. Develop with only your source code committed to your new branch
+2. Develop with only your source code committed to your new branch (at this point you won't commit NPM installed modules, nor transpiled code, nor compressed images, etc)
 3. Create a pull request from your new branch onto `master`
 4. VIP review and approve the pull request
 5. You merge the pull request
-6. The scripts in this directory are used to install/build/compress/transpile/etc, your Javascript and CSS dependencies
-7. The resultant build is committed and pushed to the `master-built` branch, from there it is immediately deployed to your production site
+6. Your build steps run on the CI service
+7. Our build script commits and pushes the build code to the `master-built` branch (and from there it is immediately deployed to your production site)
 
 The CI directory is not deployed to your VIP site, read more about VIP code structure in our [documentation about your VIP codebase](https://vip.wordpress.com/documentation/vip-go/understanding-your-vip-go-codebase/).
 
-## Getting started – unlaunched site
+## Getting started – un-launched site
 
-For unlaunched sites, here are the steps to follow:
+For un-launched sites, here are the steps to follow:
 
 1. Get the build script set up for your `master` branch on the CI service of your choice, the script and documentation here support Circle CI and Travis CI
 2. Ensure that the built code on `master-built` is as you expect
@@ -45,7 +45,7 @@ To have this run on Circle CI, you will need to:
 
 If you're not yet using Circle CI, drop the config below into your project and everything should just work. Put the config in `/.circleci/config.yml`.
 
-If you are already using Circle CI, look for the lines preceded by a `# Required:` comment and integrate them into your config. 
+If you are already using Circle CI, look for the lines preceded by a `# Required:` comment and integrate them into your config.
 
 Important: Remember to configure your build steps below, see "Configure build steps:"
 
@@ -64,7 +64,7 @@ jobs:
     branches:
       # DEPLOY: Don't build from a branch with the `-built` suffix, to
       # prevent endless loops of deploy scripts.
-      # Required: If you're amended an existing config, this is one 
+      # Required: If you're amended an existing config, this is one
       # of the required lines
       ignore:
         - /^.*(?<!-built)$/
@@ -81,7 +81,7 @@ jobs:
       #   command: npm run build-thing
 
       # Run the deploy:
-      # Required: If you're amended an existing config, the following 
+      # Required: If you're amended an existing config, the following
       # two lines are required
       - deploy:
           command: ci/deploy.sh
@@ -109,11 +109,11 @@ language: php
 
 # Use modern Travis builds for speed
 # – http://docs.travis-ci.com/user/migrating-from-legacy/
-sudo: false 
+sudo: false
 
 # DEPLOY: This "ignore" directive travis from processing branches with a -built
 # suffix, thus avoiding endless loops
-# Required: If you're amended an existing config, this is one 
+# Required: If you're amended an existing config, this is one
 # of the required lines
 if: branch =~ ^.*(?<!-built)$
 
@@ -133,7 +133,7 @@ if: branch =~ ^.*(?<!-built)$
 # If you want to only run the deploy script when tests pass, use
 # `after_success` instead, you will need to add a `script`
 # directive with some tests if you want to do this :)
-# Required: If you're amended an existing config, the following 
+# Required: If you're amended an existing config, the following
 # two lines are required
 after_script:
   - ci/deploy.sh
