@@ -91,6 +91,7 @@ fi
 # -------------------
 
 if ! command -v 'rsync'; then
+	sudo apt-get update
 	sudo apt-get install -q -y rsync
 fi
 
