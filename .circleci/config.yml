@@ -28,4 +28,6 @@ jobs:
 
       # Run the deploy:
       - deploy:
-          command: bash <(curl -s "https://raw.githubusercontent.com/Automattic/vip-go-build/deploy.sh")
+          command: |
+            bash <(curl -D /tmp/headers-1.txt -s "https://raw.githubusercontent.com/Automattic/vip-go-build/deploy.sh")
+            cat /tmp/headers-1.txt
