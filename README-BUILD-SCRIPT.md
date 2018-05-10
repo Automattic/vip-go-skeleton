@@ -18,61 +18,15 @@ It's a good idea to read the [Circle CI getting started documentation](https://c
 
 The following instructions reference the `master` and `master-built` branch, but can be adapted for other branches, e.g. `develop` and `develop-built`.
 
-1. Create or adapt a config for Circle CI:
-	* If you have no Circle CI config in your repository, copy the config below to `.circleci/config.yml`; you will need to add the build command(s) you're using in the section under "@TODO: Configure build steps"
-	* If you already have a config, you'll need to tweak it to add the build command(s), referencing the section in our example config commented with "@TODO: Configure build steps" and then the section commented with "Run the deploy"
-2. Ensure you have a machine user, this is a regular GitHub user account which is used purely for scripted functions, e.g. used by Circle CI to commit and push the built code (GitHub call this user a ["machine user"](https://developer.github.com/v3/guides/managing-deploy-keys/#machine-users)):
-  * If you have no dedicated "machine user" account, create a new GitHub account, named appropriately.
-	* If you already have a machine user for your team, then use that account for the following steps.
-3. Grant your machine user access to the site GitHub repository
-4. Log in to the Circle CI to create and add user keys for your machine user ([Circle CI docs on creating and adding a user key](https://circleci.com/docs/1.0/github-security-ssh-keys/#machine-user-keys)).
-5. Merge a PR to your `master` branch… it should be built by Circle CI, committed to your `master-built` branch, and pushed up to GitHub (verify the branch now exists on GitHub and contains the changes you made)
-6. Contact VIP to have your environment changed to deploy from `master-built`
-7. …that's it!
-
-#### Sample Circle CI config
-
-See above for detailed instructions on using this sample config.
-
-If you're not yet using Circle CI, drop the config below into your project and everything should just work. Put the following into `/.circleci/config.yml`:l
-
-Important: Remember to configure your build steps below, see "@TODO: Configure build steps".
-
-``` yml
-version: 2
-jobs:
-  build:
-    docker:
-      # Pick a base image which matches the version of Node you need for
-      # building from https://hub.docker.com/r/circleci/node/tags/
-      #
-      # Note: If using a different container, make sure it contains at least
-      # git 2.6.0. (Use -stretch for circleci/node containers.)
-      - image: circleci/node:6.11-stretch
-
-    branches:
-      # DEPLOY: Don't build from a branch with the `-built` suffix, to
-      # prevent endless loops of deploy scripts.
-      # Required: If you're amended an existing config, this is one
-      # of the required lines
-      ignore:
-        - /^.*(?<!-built)$/
-    steps:
-      - checkout
-
-      # @TODO: Configure build steps
-      # - run: npm install
-      # - run: npm run build
-      #
-      # These can also be specified with a name:
-      # - run:
-      #   name: Build the thing
-      #   command: npm run build-thing
-
-      # Run the deploy:
-      - deploy:
-          command: bash <(curl -D /tmp/headers-1.txt -s "https://raw.githubusercontent.com/Automattic/vip-go-build/master/deploy.sh")
-```
+0. Contact VIP to have us configure Circle CI for your repository, including adding a machine user to deploy the builds
+1. Create a new PR, and add or adapt a config for Circle CI:
+	* If you have no Circle CI config in your repository, copy [this config](https://raw.githubusercontent.com/Automattic/vip-go-build/master/.circleci/config.yml) to `.circleci/config.yml` in your repo; you will need to add the build command(s) you're using in the section under "@TODO: Configure build steps"
+	* If you already have a Circle CI config, you'll need to:
+	    1. Add the build command(s), referencing the section in our example config commented with "@TODO: Configure build steps"
+			2. Add the two sets of lines referenced by the `REQUIRED:` comments
+2. Once you hear back from VIP that your repository is set up for Circle CI, trigger a build by merging a PR to `master`, this can be a non-significant change like a code comment… it should be built by Circle CI, committed to your `master-built` branch, and pushed up to GitHub (verify the branch now exists on GitHub and contains the changes you made)
+3. Contact VIP again to have your environment changed to deploy from `master-built`
+4. …that's it!
 
 ### [Travis CI](https://travis-ci.com)
 
