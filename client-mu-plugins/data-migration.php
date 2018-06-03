@@ -37,28 +37,28 @@ function sample_vip_go_migration_cleanup( $dry_run ) {
     }
 
     // Options to change after sync. Each key is the option name, and each value
-	// is the value. NULL will be considered an instruction to DELETE that option.
-	$option_values = [
-		'blog_public' => -1, // Set privacy option to Private.
-	];
+    // is the value. NULL will be considered an instruction to DELETE that option.
+    $option_values = [
+        'blog_public' => -1, // Set privacy option to Private.
+    ];
 
-	foreach ( $option_values as $name => $value ) {
+    foreach ( $option_values as $name => $value ) {
 
-		if ( is_null( $value ) ) {
+        if ( is_null( $value ) ) {
 
-			if ( ! $dry_run ) {
-				delete_option( $name );
-			}
+            if ( ! $dry_run ) {
+                delete_option( $name );
+            }
 
-		} else {
+        } else {
 
-			if ( ! $dry_run ) {
-				update_option( $name, $value );
-			}
+            if ( ! $dry_run ) {
+                update_option( $name, $value );
+            }
 
-		}
+        }
 
-	}
+    }
 
 }
 add_action( 'vip_go_migration_cleanup', 'sample_vip_go_migration_cleanup' );
