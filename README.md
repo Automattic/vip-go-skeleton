@@ -10,11 +10,13 @@ All the directories here are required and will be available on production web se
 
 ### Continuous Integration
 
-If you have requested to use VIP Go "built branches", a [starter CircleCI configureation](.circleci/config.yml) may be modified to fit your objectives.
+If you have requested to use VIP Go [automated build](https://vip.wordpress.com/documentation/automated-build-and-deploy-on-vip-go/) for your assets (JS & CSS)
+and/or for pre-deploy testing,
+a [starter CircleCI configureation](.circleci/config.yml) may be modified to fit your objectives.
 
 If CI has been set up, a CI/CD readme should be in your [master-built](../blob/master-built/build/) branch already.
 
-If you're not using Continuous Integration (i.e. "built branches"), the sample CI configuration may be deleted.
+Any sample CI configuration files that you do not need may be deleted.
 
 ---
 Update this README as needed to document your repository
