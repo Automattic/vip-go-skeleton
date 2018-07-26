@@ -1,0 +1,73 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # Pick a base image which matches the version of Node you need for
+      # building from https://hub.docker.com/r/circleci/node/tags/
+      #
+      # Note: If using a different container, make sure it contains at least
+      # git 2.6.0. (Use -stretch for circleci/node containers.)
+      - image: circleci/node:6.11-stretch
+
+    branches:
+      # Don't build from a branch with the `-built` suffix, to
+      # prevent endless loops of deploy scripts.
+      # REQUIRED: If you're amended an existing config, the below are two
+      # of the required lines you must add
+      ignore:
+        - /^.*-built$/
+
+    steps:
+      - checkout
+
+      # @TODO: Configure build steps
+      # - run: npm install
+      # - run: npm run build
+      #
+      # These can also be specified with a name:
+      # - run:
+      #   name: Build the thing
+      #   command: npm run build-thing
+
+      # @TODO: modify or remove this example
+      - run: echo "Building..."
+      - run:
+          name: Create build directory
+          command: mkdir -p build
+
+      - run:
+          name: Create build readme
+          command: echo "This was built in CI on $(date)" > build/README.md
+
+      # multiple commands can be combined by starting with the |
+      # do not indent with tabs!
+      - run:
+          name: Add some helpful info to the README
+          command: |
+            echo -e "\n\n## Continuous Integration & Continuous Deployment on VIP Go" >> build/README.md
+            echo -e "\nSee our docs in the [VIP Lobby](https://vip.wordpress.com/documentation/automated-build-and-deploy-on-vip-go/)" >> build/README.md
+            echo -e "\n\nThis branch e.g. master-built is created automatically when " >> build/README.md
+            echo "a commit or merge is made to the base branch e.g. master, using [your CircleCI configuration](../.circleci/config.yml), which you can **customize**" >> build/README.md
+
+      # Test to ensure the build was good, do not deploy bad stuff!
+      - run: 
+          name: Test the build
+          command: |
+            if [ -f build/README.md ]; then
+              echo "Build succeeded";
+            else
+              echo "Build failed, file missing"; exit 1
+            fi
+
+      - add_ssh_keys:
+          fingerprints:
+            - "a3:12:b5:cd:d5:d5:83:80:69:49:65:a0:d9:9c:1a:2a"
+
+      # Run the deploy:
+      # REQUIRED: If you're amended an existing config, the below are two
+      # of the required lines you must add
+      # This will push the result to the {currentbranch}-built branch
+      - deploy:
+          name: Deploy -built branch to github
+          command: bash <(curl -s "https://raw.githubusercontent.com/Automattic/vip-go-build/master/deploy.sh")
+
