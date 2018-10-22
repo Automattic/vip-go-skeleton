@@ -16,5 +16,5 @@
  * You can also specify a specific root file: wpcom_vip_load_plugin( 'plugin-name/plugin.php' );
  *
  * wpcom_vip_load_plugin only loads plugins from the `WP_PLUGIN_DIR` directory.
- * For client-mu-plugins `requre __DIR__ '/plugin-name/plugin-name.php'` works.
+ * For client-mu-plugins `require __DIR__ . '/plugin-name/plugin-name.php'` works.
  */
