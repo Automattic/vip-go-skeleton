@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<ruleset
+		name="VIP Go Sites"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+	<description>Custom ruleset for VIP Go sites.</description>
+
+	<!-- For help in understanding this file: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+	<!-- For help in using PHPCS: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
+	<!-- For VIP GO code review items: https://vip.wordpress.com/documentation/vip-go/code-review-blockers-warnings-notices/ -->
+	<!-- For VIP GO PHPCS severity levels: https://vip.wordpress.com/documentation/phpcs-review-feedback/ -->
+
+	<!-- What to scan -->
+	<file>./themes/</file>
+	<!-- Ignoring Files and Folders:
+		https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders -->
+	<exclude-pattern>./themes/twentyseventeen/</exclude-pattern>
+	<exclude-pattern>./node_modules/</exclude-pattern>
+	<exclude-pattern>./vendor/</exclude-pattern>
+
+	<!-- How to scan -->
+	<arg value="sp"/> <!-- Show sniff and progress -->
+	<arg name="colors"/> <!-- Show results with colors. Disable if working on Windows -->
+	<arg name="basepath" value="."/> <!-- Strip the file paths down to the relevant bit -->
+	<arg name="parallel" value="8"/> <!-- Enables parallel processing when available for faster results -->
+	<arg name="extensions" value="php,js"/> <!-- Limit to PHP and JS files -->
+
+	<!-- Rules: Check PHP version compatibility - see
+		https://github.com/PHPCompatibility/PHPCompatibilityWP -->
+	<rule ref="PHPCompatibilityWP"/>
+	<!-- For help in understanding this testVersion:
+		https://github.com/PHPCompatibility/PHPCompatibility#sniffing-your-code-for-compatibility-with-specific-php-versions -->
+	<config name="testVersion" value="7.2-"/>
+
+	<!-- Rules: VIP Coding Standards - see
+		https://github.com/Automattic/VIP-Coding-Standards -->
+	<rule ref="WordPress-VIP-Go"/>
+
+	<!-- Rules: WordPress Coding Standards - see
+		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
+	<!--<rule ref="WordPress-Extra"/>--> <!-- Includes WordPress-Core -->
+	<!--<rule ref="WordPress-Docs"/>-->
+	<!-- For help in understanding this minimum_supported_wp_version:
+		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#setting-minimum-supported-wp-version-for-all-sniffs-in-one-go-wpcs-0140 -->
+	<config name="minimum_supported_wp_version" value="4.9"/>
+
+	<!-- For help in understanding this prefixes property:
+		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#naming-conventions-prefix-everything-in-the-global-namespace -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="your_theme_prefix"/> <!-- Change this value to your theme slug/prefix. -->
+				<!--<element value="my_custom_plugin"/>-->
+			</property>
+		</properties>
+	</rule>
+
+	<!-- For help in understanding this text_domain property:
+		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#internationalization-setting-your-text-domain -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="your-theme-slug"/> <!-- Change this value to your theme slug. -->
+				<!--<element value="my-custom-plugin"/>-->
+			</property>
+		</properties>
+	</rule>
+
+</ruleset>

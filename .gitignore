@@ -21,3 +21,10 @@ db.php
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Local PHPCS configuration files
+.phpcs.xml
+phpcs.xml
+
+# Composer (repo root only)
+/vendor/
