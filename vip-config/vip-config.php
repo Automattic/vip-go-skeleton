@@ -6,8 +6,8 @@
  * and such, we've taken care of that for you. This is just for if you need to define an API key or something
  * of that nature.
  *
- * WARNING: this file is loaded very early,
- * and most WordPress APIs are not available, hence the code should be limited to pure PHP.
+ * WARNING: This file is loaded very early (immediately after `wp-config.php`), which means that most WordPress APIs,
+ *   classes, and functions are not available. The code below should be limited to pure PHP.
  *
  * @see https://vip.wordpress.com/documentation/vip-go/understanding-your-vip-go-codebase/
  *
