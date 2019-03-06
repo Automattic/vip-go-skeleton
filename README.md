@@ -11,7 +11,7 @@ We'd recommend starting with one of the following guidebooks. They include every
 
 ## Quick links to relevant documentation
 
-To dig straight into our documentation to get up and running, try:
+To dig straight into our documentation and get up and running, try:
 
 * [Understanding your VIP Go codebase](https://vip.wordpress.com/documentation/vip-go/understanding-your-vip-go-codebase/)
 * [VIP Go local development](https://vip.wordpress.com/documentation/vip-go/local-vip-go-development-environment/)
@@ -23,3 +23,11 @@ All the directories in this repo are required, and will be available on producti
 ## Support
 
 If you need help with anything, VIP's support team is [just a ticket away](https://vip.wordpress.com/documentation/vip-go/accessing-vip-support/).
+
+## Your content here
+ 
+Feel free to add to or replace this README.md content with content unique to your project, for example:
+ 
+* Project-specific notes; like a list of VIP environments and branches,
+* Workflow documentation; so everyone working in this repo can follow a defined process, or
+* Instructions for testing new features.
