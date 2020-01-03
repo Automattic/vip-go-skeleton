@@ -16,6 +16,9 @@
 # Uploads directory
 /uploads/
 
+# Leftover core/plugin upgrade files
+/upgrade/
+
 # mu-plugins; these are managed at the platform-level
 /mu-plugins/
 
