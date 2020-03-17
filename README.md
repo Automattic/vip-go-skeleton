@@ -23,10 +23,10 @@ All the following directories are required and must not be removed:
 * `client-mu-plugins`: for always active, global plugins (similar to `mu-plugins`) — see [our documentation](https://wpvip.com/documentation/vip-go/managing-plugins/#installing-to-the-client-mu-plugins-directory) for more information.
 * `images`: Store your site's favicons here, per [this documentation](https://wpvip.com/documentation/vip-go/understanding-your-vip-go-codebase/#favicons). All other public-facing images should be uploaded or [imported](https://wpvip.com/documentation/launching-with-vip/content-migration/) to the WordPress dashboard or stored as part of your `/theme/` assets.
 * `languages`: For `.po` and `.mo` translation files, which specify the translated strings for the site.
-* `plugins`: Your site's plugins — more details [here](https://wpvip.com/documentation/vip-go/managing-plugins/#installing-to-the-plugins%C2%A0directory).
+* `plugins`: Your site's plugins — more details [here](https://wpvip.com/documentation/vip-go/managing-plugins/#installing-to-the-plugins-directory).
 * `private`: Provides access to files that are not directly web accessible, but can be accessed by your theme or plugin code — [more details here](https://wpvip.com/documentation/vip-go/understanding-your-vip-go-codebase/#using-private).
-* `themes`: Themes to be made available to your sites. We recommend keeping the default theme available for testing purposes.
-* `vip-config`: For custom configuration changes, and additional `sunrise.php` code. This folder’s `vip-config.php` file is used in place of `wp-config.php`.
+* `themes`: Themes to be made available to your sites. We recommend keeping the default theme available for [testing purposes](https://wpvip.com/documentation/testing-your-site/).
+* `vip-config`: For custom configuration changes and additional `sunrise.php` [code](https://wpvip.com/documentation/vip-go/sunrise-php-on-vip-go/). This folder’s `vip-config.php` file is used in place of `wp-config.php`.
 
 These directories will also be available on production web servers. Any additional directories created in your GitHub repository that are not included in the above list will not be mounted onto your site, and so will not be web-accessible.
 
