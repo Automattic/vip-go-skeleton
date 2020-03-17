@@ -24,7 +24,7 @@ All the following directories are required and must not be removed:
 * `images`: Store your site's favicons here, per [this documentation](https://wpvip.com/documentation/vip-go/understanding-your-vip-go-codebase/#favicons). All other public-facing images should be uploaded or [imported](https://wpvip.com/documentation/launching-with-vip/content-migration/) to the WordPress dashboard or stored as part of your `/theme/` assets.
 * `languages`: For `.po` and `.mo` translation files, which specify the translated strings for the site.
 * `plugins`: Your site's plugins — more details [here](https://wpvip.com/documentation/vip-go/managing-plugins/#installing-to-the-plugins%C2%A0directory).
-* `private`: For any files which must not be web-accessible — [more details here](https://wpvip.com/documentation/vip-go/understanding-your-vip-go-codebase/#using-private).
+* `private`: Provides access to files that are not directly web accessible, but can be accessed by your theme or plugin code — [more details here](https://wpvip.com/documentation/vip-go/understanding-your-vip-go-codebase/#using-private).
 * `themes`: Themes to be made available to your sites. We recommend keeping the default theme available for testing purposes.
 * `vip-config`: For custom configuration changes, and additional `sunrise.php` code. This folder’s `vip-config.php` file is used in place of `wp-config.php`.
 
