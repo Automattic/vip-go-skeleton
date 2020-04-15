@@ -1,0 +1,13 @@
+{
+    "plugins": [
+        "./client-mu-plugins/",
+        "./mu-plugins/",
+        "./plugins/"
+    ],
+    "themes": [
+        "./themes/"
+    ],
+    "config": {
+        "WP_DEBUG_DISPLAY": true
+    }
+}
