@@ -15,3 +15,10 @@
  *
  * - The WordPress.com VIP Team
  **/
+
+// Set a high default limit to avoid too many revisions from polluting the database.
+// Posts with extremely high revisions can result in fatal errors or have performance issues.
+// Feel free to adjust this depending on your use cases.
+if ( ! defined( 'WP_POST_REVISIONS' ) ) {
+	define( 'WP_POST_REVISIONS', 500 );
+}
