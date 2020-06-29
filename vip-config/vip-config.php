@@ -22,3 +22,12 @@
 if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 	define( 'WP_POST_REVISIONS', 500 );
 }
+
+// The VIP_JETPACK_IS_PRIVATE constant is enabled by default in non-production environments.
+// It disables programmatic access to content via the WordPress.com REST API and Jetpack Search;
+// subscriptions via the WordPress.com Reader; and syndication via the WordPress.com Firehose.
+// More information about these features is available in our documentation:
+// https://wpvip.com/documentation/vip-go/restricting-access-to-a-site-hosted-on-vip-go/#controlling-content-distribution-via-jetpack
+if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) && 'production' !== VIP_GO_APP_ENVIRONMENT ) {
+    define( 'VIP_JETPACK_IS_PRIVATE', true );
+}
