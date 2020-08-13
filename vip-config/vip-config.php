@@ -22,3 +22,21 @@
 if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 	define( 'WP_POST_REVISIONS', 500 );
 }
+
+/**
+ * Disable New Relic Browser instrumentation.
+ *
+ * By default, the New Relic extension automatically enables Browser instrumentation.
+ *
+ * This injects some New Relic specific javascript onto all pages on the VIP Platform.
+ *
+ * This isn't always desireable (e.g. impacts performance) so let's turn it off.
+ *
+ * If you would like to enable Browser intrumentation, please remove the lines below.
+ *
+ * @see https://docs.newrelic.com/docs/agents/php-agent/features/new-relic-browser-php-agent#disable
+ * @see https://wpvip.com/documentation/vip-go/new-relic-on-vip-go/
+ */
+if ( function_exists( 'newrelic_disable_autorum' ) ) {
+	newrelic_disable_autorum();
+}
