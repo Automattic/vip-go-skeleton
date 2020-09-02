@@ -39,7 +39,7 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
  */
 if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) &&
 	defined( 'VIP_GO_APP_ENVIRONMENT' ) &&
-	'production' !== VIP_GO_APP_ENVIRONMENT ) ) {
+	'production' !== VIP_GO_APP_ENVIRONMENT ) {
 	define( 'VIP_JETPACK_IS_PRIVATE', true );
 }
 
