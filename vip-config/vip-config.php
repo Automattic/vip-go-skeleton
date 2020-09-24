@@ -52,7 +52,7 @@ if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) &&
  *
  * This isn't always desireable (e.g. impacts performance) so let's turn it off.
  *
- * If you would like to enable Browser intrumentation, please remove the lines below.
+ * If you would like to enable Browser instrumentation, please remove the lines below.
  *
  * @see https://docs.newrelic.com/docs/agents/php-agent/features/new-relic-browser-php-agent#disable
  * @see https://wpvip.com/documentation/vip-go/new-relic-on-vip-go/
