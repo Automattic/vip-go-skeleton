@@ -60,3 +60,16 @@ if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) &&
 if ( function_exists( 'newrelic_disable_autorum' ) ) {
 	newrelic_disable_autorum();
 }
+
+/**
+ * Default to the Block Editor.
+ *
+ * The Gutenberg Ramp plugin was introduced as a way to help sites to transition to the Block Editor.
+ *
+ * The plugin will be deprecated in early 2021 and this disables those transitional capabilities to make the Block Editor the default.
+ *
+ * To restore the old TinyMCE editor, we recommend using the "Classic Editor" plugin (https://wordpress.org/plugins/classic-editor/).
+ *
+ * @see https://wpvip.com/documentation/vip-go/loading-gutenberg/
+ */
+define( 'VIP_GO_DISABLE_RAMP', true );
