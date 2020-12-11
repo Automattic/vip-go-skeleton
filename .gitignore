@@ -1,10 +1,10 @@
 # Development files
-.stylelintrc.json
-.stylelintrc-css.json
-.stylelintignore
+/themes/twentytwentyone/.stylelintrc.json
+/themes/twentytwentyone/.stylelintrc-css.json
+/themes/twentytwentyone/.stylelintignore
+/themes/twentytwentyone/assets/sass
 package.json
 package-lock.json
-themes/twentytwentyone/assets/sass
 
 # Built-in; ship with vip-go-mu-plugins
 /plugins/akismet/
