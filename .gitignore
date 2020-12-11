@@ -1,7 +1,10 @@
 # Development files
 .stylelintrc.json
+.stylelintrc-css.json
+.stylelintignore
 package.json
 package-lock.json
+themes/*/assets/sass
 
 # Built-in; ship with vip-go-mu-plugins
 /plugins/akismet/
