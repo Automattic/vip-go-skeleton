@@ -6,7 +6,7 @@ Welcome to VIP! This repo is a starting point for building your VIP Go site, inc
 
 We'd recommend starting with one of the following guidebooks. They include everything you need to know about launching and developing with VIP:
 
-* [Launching with VIP](https://docs.wpvip.com/how-tos/launch-a-site-with-vip/)
+* [Launching with VIP](https://docs.wpvip.com/how-tos/launch-a-site/)
 * [Developing with VIP](https://wpvip.com/documentation/developing-with-vip/)
 
 ## Quick links to relevant documentation
