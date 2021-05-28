@@ -5,7 +5,7 @@
  * development environments. Using this file to do so helps load and activate
  * plugins as early as possible in the WordPress load order.
  * 
- * @see https://docs.wpvip.com/how-tos/load-and-activate-plugins-through-code/
+ * @see https://docs.wpvip.com/how-tos/activate-plugins-through-code/
  * @see https://docs.wpvip.com/technical-references/vip-codebase/client-mu-plugins-directory/
  */
 
