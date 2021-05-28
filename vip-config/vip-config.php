@@ -9,11 +9,11 @@
  * WARNING: This file is loaded very early (immediately after `wp-config.php`), which means that most WordPress APIs,
  *   classes, and functions are not available. The code below should be limited to pure PHP.
  *
- * @see https://vip.wordpress.com/documentation/vip-go/understanding-your-vip-go-codebase/
+ * @see https://docs.wpvip.com/technical-references/vip-codebase/vip-config-directory/
  *
- * Happy Coding!
+ * Happy coding!
  *
- * - The WordPress.com VIP Team
+ * - The WordPress VIP Team
  **/
 
 /**
@@ -35,7 +35,7 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
  *
  * You can disable "private" mode (e.g. for testing) in non-production environment by setting the constant to `true` below (or just by removing the lines).
  * 
- * @see https://wpvip.com/documentation/vip-go/restricting-access-to-a-site-hosted-on-vip-go/#controlling-content-distribution-via-jetpack
+ * @see https://docs.wpvip.com/technical-references/restricting-site-access/controlling-content-distribution-via-jetpack/
  */
 if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) &&
 	defined( 'VIP_GO_APP_ENVIRONMENT' ) &&
@@ -54,8 +54,8 @@ if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) &&
  *
  * If you would like to enable Browser instrumentation, please remove the lines below.
  *
- * @see https://docs.newrelic.com/docs/agents/php-agent/features/new-relic-browser-php-agent#disable
- * @see https://wpvip.com/documentation/vip-go/new-relic-on-vip-go/
+ * @see https://docs.newrelic.com/docs/agents/php-agent/features/browser-monitoring-php-agent/#disable
+ * @see https://docs.wpvip.com/technical-references/tools-for-site-management/new-relic/
  */
 if ( function_exists( 'newrelic_disable_autorum' ) ) {
 	newrelic_disable_autorum();
