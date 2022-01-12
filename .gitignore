@@ -1,18 +1,39 @@
-# Debug plugins
-plugins/log-deprecated-notices
-plugins/monster-widget
-plugins/query-monitor
-plugins/user-switching
+# Development files
+/themes/twentytwentyone/.stylelintrc.json
+/themes/twentytwentyone/.stylelintrc-css.json
+/themes/twentytwentyone/.stylelintignore
+/themes/twentytwentyone/assets/sass
+/themes/twentytwentyone/postcss.config.js
+package.json
+package-lock.json
+
+# Built-in; ship with vip-go-mu-plugins
+/plugins/akismet/
+/plugins/advanced-post-cache/
+/plugins/cron-control/
+/plugins/debug-bar/
+/plugins/debug-bar-cron/
+/plugins/gutenberg-ramp/
+/plugins/jetpack/
+/plugins/jetpack-force-2fa/
+/plugins/lightweight-term-count-update/
+/plugins/query-monitor/
+/plugins/rewrite-rules-inspector/
+/plugins/two-factor/
+/plugins/vaultpress/
 
 # Uploads directory
-uploads
+/uploads/
+
+# Leftover core/plugin upgrade files
+/upgrade/
 
 # mu-plugins; these are managed at the platform-level
-mu-plugins
+/mu-plugins/
 
 # drop-ins; these are managed at the platform-level
-object-cache.php
-db.php
+/object-cache.php
+/db.php
 
 # Ignore temporary OS files
 .DS_Store
