@@ -1,49 +1,41 @@
-# VIP Go Skeleton
+# VIP Skeleton
 
-Welcome to VIP! This repo is a starting point for building your VIP Go site, including all the base folders to be built on.
+Welcome to VIP! This repo is a starting point for building your VIP site, including all the base folders to be built on.
 
 ## Guidebooks
 
-We'd recommend starting with one of the following guidebooks. They include everything you need to know about launching and developing with VIP:
+We recommend starting with one of the following guidebooks:
 
 * [Launching with VIP](https://docs.wpvip.com/how-tos/launch-a-site/)
-* [Developing with VIP](https://wpvip.com/documentation/developing-with-vip/)
-
-## Quick links to relevant documentation
-
-To dig straight into our documentation and get up and running, try:
-
-* [Understanding your VIP Go codebase](https://docs.wpvip.com/technical-references/vip-codebase/)
-* [VIP Go local development](https://docs.wpvip.com/how-tos/set-up-a-vip-go-local-development-site/)
+* [VIP development workflow](https://docs.wpvip.com/technical-references/development-workflow/)
+* [VIP local development](https://docs.wpvip.com/how-tos/local-development/)
 
 ## Usage
 
-All the directories here are required and will be available on production web servers. Any extra directories will not be available in production.
+All the directories here are required and will be available on production web servers. Additional directories will not be available in production. For more information on how our codebase is structured, see https://docs.wpvip.com/technical-references/vip-codebase/.
 
-## PHPCS
+## PHPCS 
 
-This repo contains a starting point for installing and using a _local_ version of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer/) (PHPCS). To get started, you'll need [Composer](https://getcomposer.org/), then open a command line at this directory, and run:
+This repo contains a starting point for installing and using a _local_ version of [PHP_CodeSniffer](https://docs.wpvip.com/how-tos/php_codesniffer/) (PHPCS). To get started, you'll need to have [Composer](https://getcomposer.org/) installed, then open a command line at this directory, and run:
 
 ```sh
 composer install
 ```
 
-This will:
+This will install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) and register the below standards:
 
- - install PHP_CodeSniffer
- - install the VIP Coding Standards
- - install the WordPress Coding Standards
- - install the PHPCompatibilityWP Standard
- - register the above standards with PHP_CodeSniffer
+ - [VIP Coding Standards](https://github.com/Automattic/VIP-Coding-Standards)
+ - [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards)
+ - [PHPCompatibilityWP Standard](https://github.com/PHPCompatibility/PHPCompatibilityWP)
 
-The [`.phpcs.xml.dist`](.phpcs.xml.dist) file contains a _suggested_ configuration, but you are free to amend this. We would strongly recommend:
+The [`.phpcs.xml.dist`](.phpcs.xml.dist) file contains a _suggested_ configuration, but you are free to amend this. We strongly recommend:
 
  - keeping the `WordPress-VIP-Go` rule active
  - keeping the `PHPCompatibilityWP` rule active
  - setting the `prefixes` property for your theme and any plugins ([info](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#naming-conventions-prefix-everything-in-the-global-namespace))
  - setting the `text_domain` property for your theme and any plugins ([info](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#internationalization-setting-your-text-domain)) 
   
-We would also recommend keeping the `WordPress-Extra` and `WordPress-Docs` rules active, though these are not required for VIP Go.
+We also recommend keeping the `WordPress-Extra` and `WordPress-Docs` rules active, though these are not required for VIP.
 
 You can move or copy the `.phpcs.xml.dist` into the root of your theme and custom plugin directories, and adjust it for more granularity of configuration for theme and custom plugins.
 
