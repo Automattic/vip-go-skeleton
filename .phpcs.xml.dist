@@ -49,26 +49,5 @@
 		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#setting-minimum-supported-wp-version-for-all-sniffs-in-one-go-wpcs-0140 -->
 	<config name="minimum_supported_wp_version" value="5.9-"/>
 
-	<!-- For help in understanding this prefixes property:
-		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#naming-conventions-prefix-everything-in-the-global-namespace -->
-	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
-		<properties>
-			<property name="prefixes" type="array">
-				<element value="your_theme_prefix"/> <!-- Change this value to your theme slug/prefix. -->
-				<!--<element value="my_custom_plugin"/>-->
-			</property>
-		</properties>
-	</rule>
-
-	<!-- For help in understanding this text_domain property:
-		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#internationalization-setting-your-text-domain -->
-	<rule ref="WordPress.WP.I18n">
-		<properties>
-			<property name="text_domain" type="array">
-				<element value="your-theme-slug"/> <!-- Change this value to your theme slug. -->
-				<!--<element value="my-custom-plugin"/>-->
-			</property>
-		</properties>
-	</rule>
-
+	<!-- For more information on customizing this file, see https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/. -->
 </ruleset>
