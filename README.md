@@ -1,23 +1,43 @@
-# VIP Go Skeleton
+# VIP Skeleton
 
-Welcome to VIP! This repo is a starting point for building your VIP Go site, including all the base folders to be built on.
+Welcome to VIP! This repo is a starting point for building your VIP site, including all the base folders to be built on.
 
 ## Guidebooks
 
-We'd recommend starting with one of the following guidebooks. They include everything you need to know about launching and developing with VIP:
+We recommend starting with one of the following guidebooks:
 
 * [Launching with VIP](https://docs.wpvip.com/how-tos/launch-a-site/)
-* [Developing with VIP](https://wpvip.com/documentation/developing-with-vip/)
-
-## Quick links to relevant documentation
-
-To dig straight into our documentation and get up and running, try:
-
-* [Understanding your VIP Go codebase](https://docs.wpvip.com/technical-references/vip-codebase/)
-* [VIP Go local development](https://docs.wpvip.com/how-tos/set-up-a-vip-go-local-development-site/)
+* [VIP development workflow](https://docs.wpvip.com/technical-references/development-workflow/)
+* [VIP local development](https://docs.wpvip.com/how-tos/local-development/)
 
 ## Usage
 
+All the directories here are required and will be available on production web servers. Additional directories will not be available in production. For more information on how our codebase is structured, see https://docs.wpvip.com/technical-references/vip-codebase/.
+
+## PHPCS 
+
+This repo contains a starting point for installing and using a _local_ version of [PHP_CodeSniffer](https://docs.wpvip.com/how-tos/php_codesniffer/) (PHPCS). To get started, you'll need to have [Composer](https://getcomposer.org/) installed, then open a command line at this directory, and run:
+
+```sh
+composer install
+```
+
+This will install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) and register the below standards:
+
+ - [VIP Coding Standards](https://github.com/Automattic/VIP-Coding-Standards)
+ - [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards)
+ - [PHPCompatibilityWP Standard](https://github.com/PHPCompatibility/PHPCompatibilityWP)
+
+The [`.phpcs.xml.dist`](https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/) file contains a _suggested_ configuration, but you are free to amend this. You can also [extend](https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/#h-extending-the-root-phpcs-xml-dist-file-for-custom-themes-and-plugins) it for more granularity of configuration for theme and custom plugins.
+
+To run PHPCS, navigate to the directory where the relevant `.phpcs.xml.dist` lives, and type:
+
+```sh
+vendor/bin/phpcs
+```
+
+See the [PHPCS documentation](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage) (or run `phpcs -h`) for the available command line arguments.
+=======
 All the following directories are required and must not be removed:
 
 * `client-mu-plugins`: for always active, global plugins (similar to `mu-plugins`) — see [our documentation](https://docs.wpvip.com/technical-references/vip-codebase/client-mu-plugins-directory/) for more information.

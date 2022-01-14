@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<ruleset
+		name="VIP Sites"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+	<description>Custom ruleset for VIP sites.</description>
+
+	<!-- Note: this file is only used for local PHPCS checks; the vip-go-ci bot does not read it.
+	To customize the bot's behavior, see https://docs.wpvip.com/how-tos/customize-the-bot/. -->
+
+	<!-- For help in understanding this file: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Annotated-ruleset.xml -->
+	<!-- For help in using PHPCS: https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage -->
+	<!-- For VIP code review items: https://docs.wpvip.com/technical-references/code-review/ -->
+	<!-- For VIP PHPCS severity levels: https://docs.wpvip.com/technical-references/vip-code-analysis-bot/phpcs-report/ -->
+
+	<!-- What to scan -->
+	<file>./themes/</file>
+	<file>./client-mu-plugins/</file>
+	<file>./plugins/</file>
+	<!-- Ignoring Files and Folders:
+		https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders -->
+	<exclude-pattern>./themes/twentytwentyone/</exclude-pattern>
+	<exclude-pattern>./node_modules/</exclude-pattern>
+	<exclude-pattern>./vendor/</exclude-pattern>
+
+	<!-- How to scan -->
+	<arg value="sp"/> <!-- Show sniff and progress -->
+	<arg name="colors"/> <!-- Show results with colors. Disable if working on Windows -->
+	<arg name="basepath" value="."/> <!-- Strip the file paths down to the relevant bit -->
+	<arg name="parallel" value="8"/> <!-- Enables parallel processing when available for faster results -->
+	<arg name="extensions" value="php,js"/> <!-- Limit to PHP and JS files -->
+
+	<!-- Rules: Check PHP version compatibility - see
+		https://github.com/PHPCompatibility/PHPCompatibilityWP -->
+	<rule ref="PHPCompatibilityWP"/>
+	<!-- For help in understanding this testVersion:
+		https://github.com/PHPCompatibility/PHPCompatibility#sniffing-your-code-for-compatibility-with-specific-php-versions -->
+	<config name="testVersion" value="7.4-"/>
+
+	<!-- Rules: VIP Coding Standards - see
+		https://github.com/Automattic/VIP-Coding-Standards -->
+	<rule ref="WordPress-VIP-Go"/>
+
+	<!-- Rules: WordPress Coding Standards - see
+		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards -->
+	<!--<rule ref="WordPress-Extra"/>--> <!-- Includes WordPress-Core -->
+	<!--<rule ref="WordPress-Docs"/>-->
+	<!-- For help in understanding this minimum_supported_wp_version:
+		https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#setting-minimum-supported-wp-version-for-all-sniffs-in-one-go-wpcs-0140 -->
+	<config name="minimum_supported_wp_version" value="5.9-"/>
+
+	<!-- For more information on customizing this file, see https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/. -->
+</ruleset>

@@ -1,0 +1,14 @@
+{
+  "name": "automattic/vip-go-skeleton",
+  "description": "Used for setting up development dependencies across the whole repository.",
+  "homepage": "https://github.com/automattic/vip-go-skeleton",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">= 7.4"
+  },
+  "require-dev": {
+    "automattic/vipwpcs": "^2.3",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+    "phpcompatibility/phpcompatibility-wp": "^2"
+  }
+}
