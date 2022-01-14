@@ -28,16 +28,7 @@ This will install [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer
  - [WordPress Coding Standards](https://github.com/WordPress/WordPress-Coding-Standards)
  - [PHPCompatibilityWP Standard](https://github.com/PHPCompatibility/PHPCompatibilityWP)
 
-The [`.phpcs.xml.dist`](.phpcs.xml.dist) file contains a _suggested_ configuration, but you are free to amend this. We strongly recommend:
-
- - keeping the `WordPress-VIP-Go` rule active
- - keeping the `PHPCompatibilityWP` rule active
- - setting the `prefixes` property for your theme and any plugins ([info](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#naming-conventions-prefix-everything-in-the-global-namespace))
- - setting the `text_domain` property for your theme and any plugins ([info](https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#internationalization-setting-your-text-domain)) 
-  
-We also recommend keeping the `WordPress-Extra` and `WordPress-Docs` rules active, though these are not required for VIP.
-
-You can move or copy the `.phpcs.xml.dist` into the root of your theme and custom plugin directories, and adjust it for more granularity of configuration for theme and custom plugins.
+The [`.phpcs.xml.dist`](https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/) file contains a _suggested_ configuration, but you are free to amend this. You can also [extend](https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/#h-extending-the-root-phpcs-xml-dist-file-for-custom-themes-and-plugins) it for more granularity of configuration for theme and custom plugins.
 
 To run PHPCS, navigate to the directory where the relevant `.phpcs.xml.dist` lives, and type:
 

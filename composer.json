@@ -10,8 +10,5 @@
     "automattic/vipwpcs": "^2.3",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
     "phpcompatibility/phpcompatibility-wp": "^2"
-  },
-  "scripts": {
-    "install-codestandards": "Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin::run"
   }
 }
