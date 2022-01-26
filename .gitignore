@@ -1,9 +1,4 @@
 # Development files
-/themes/twentytwentyone/.stylelintrc.json
-/themes/twentytwentyone/.stylelintrc-css.json
-/themes/twentytwentyone/.stylelintignore
-/themes/twentytwentyone/assets/sass
-/themes/twentytwentyone/postcss.config.js
 package.json
 package-lock.json
 
