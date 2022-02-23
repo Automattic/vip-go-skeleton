@@ -10,10 +10,6 @@ We recommend starting with one of the following guidebooks:
 * [VIP development workflow](https://docs.wpvip.com/technical-references/development-workflow/)
 * [VIP local development](https://docs.wpvip.com/how-tos/local-development/)
 
-## Usage
-
-All the directories here are required and will be available on production web servers. Additional directories will not be available in production. For more information on how our codebase is structured, see https://docs.wpvip.com/technical-references/vip-codebase/.
-
 ## Directories
 
 All the following directories are required and must not be removed:
@@ -27,6 +23,10 @@ All the following directories are required and must not be removed:
 * `vip-config`: For custom configuration changes and additional `sunrise.php` [details](https://docs.wpvip.com/technical-references/multisites/sunrise-php/). This folder’s `vip-config.php` can be used to supply things usually found in `wp-config.php`. [More details here](https://docs.wpvip.com/technical-references/vip-codebase/vip-config-directory/).
 
 These directories will also be available on production web servers. Any additional directories created in your GitHub repository that are not included in the above list will not be mounted onto your site, and so will not be web-accessible.
+
+For more information on how our codebase is structured, see https://docs.wpvip.com/technical-references/vip-codebase/. 
+
+The `docs/` directory is a special directory that contains your documentation for your application. It is not mounted onto your site, but is available for you to use. See [docs/index.php](docs/index.php) for more information.
 
 ## PHPCS for checking coding standards
 
@@ -56,10 +56,12 @@ See the [PHPCS documentation](https://github.com/squizlabs/PHP_CodeSniffer/wiki/
 
 If you need help with anything, VIP's support team is [just a ticket away](https://wpvip.com/accessing-vip-support/).
 
-## Your content here
+## Your documentation here
 
 Feel free to add to or replace this README.md content with content unique to your project, for example:
 
 * Project-specific notes; like a list of VIP environments and branches,
 * Workflow documentation; so everyone working in this repo can follow a defined process, or
 * Instructions for testing new features.
+
+This can be detailed in the `docs/` directory.
