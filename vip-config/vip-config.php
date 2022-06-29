@@ -63,7 +63,7 @@ if ( function_exists( 'newrelic_disable_autorum' ) ) {
 
 /**
  * Set WP_DEBUG to true for all non-production environments to ensure _doing_it_wrong() notices display
- * in Query Monitor.
+ * in Query Monitor. This also changes the error_reporting level to E_ALL.
  *
  * @see https://wordpress.org/support/article/debugging-in-wordpress/#wp_debug
  */
