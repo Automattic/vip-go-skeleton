@@ -62,12 +62,11 @@ if ( function_exists( 'newrelic_disable_autorum' ) ) {
 }
 
 /**
- * Set WP_DEBUG to true for all non-production environments to ensure _doing_it_wrong() notices display
- * in Query Monitor. This also changes the error_reporting level to E_ALL.
+ * Set WP_DEBUG to true for all local or non-production VIP environments to ensure
+ * _doing_it_wrong() notices display in Query Monitor. This also changes the error_reporting level to E_ALL.
  *
  * @see https://wordpress.org/support/article/debugging-in-wordpress/#wp_debug
  */
-
-if ( defined( 'VIP_GO_APP_ENVIRONMENT' ) && 'production' !== VIP_GO_APP_ENVIRONMENT ) {
+if ( ! defined( 'VIP_GO_APP_ENVIRONMENT' ) || ( defined( 'VIP_GO_APP_ENVIRONMENT' ) && 'production' !== VIP_GO_APP_ENVIRONMENT ) ) {
 	define( 'WP_DEBUG', true );
 }
