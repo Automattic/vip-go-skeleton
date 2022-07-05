@@ -1,26 +1,27 @@
-# VIP Skeleton
+# WordPress VIP Skeleton Application
 
-Welcome to VIP! This repo is a starting point for building your VIP site, including all the base folders to be built on.
+Welcome to WordPress VIP! This repository is a starting point for building your WordPress VIP application, including all the base directories.
 
 ## Guidebooks
 
-We recommend starting with one of the following guidebooks:
+We recommend starting with one of the following WordPress VIP guidebooks:
 
-* [Launching with VIP](https://docs.wpvip.com/how-tos/launch-a-site/)
-* [VIP development workflow](https://docs.wpvip.com/technical-references/development-workflow/)
-* [VIP local development](https://docs.wpvip.com/how-tos/local-development/)
+* [Local development for a WordPress VIP application](https://docs.wpvip.com/how-tos/local-development/)
+* [Development workflow for WordPress VIP](https://docs.wpvip.com/technical-references/development-workflow/)
+* [Launching a site with WordPress VIP](https://docs.wpvip.com/how-tos/launch-a-site/)
 
 ## Directories
 
 All the following directories are required and must not be removed:
 
-* `client-mu-plugins`: for always active, global plugins (similar to `mu-plugins`) — see [our documentation](https://docs.wpvip.com/technical-references/vip-codebase/client-mu-plugins-directory/) for more information.
-* `images`: Store your site's favicons here, per [this documentation](https://docs.wpvip.com/technical-references/vip-codebase/images-directory/). All other public-facing images should be uploaded or [imported](https://docs.wpvip.com/how-tos/launch-a-site-with-vip/launch-with-vip-migrate-content/) to the WordPress dashboard or stored as part of your `/theme/` assets.
-* `languages`: For `.po` and `.mo` translation files, which specify the translated strings for the site — [more details here](https://docs.wpvip.com/how-tos/upload-languages-to-the-language-directory/).
-* `plugins`: Your site's plugins — [more details here](https://docs.wpvip.com/technical-references/vip-codebase/plugins-directory/).
-* `private`: Provides access to files that are not directly web accessible, but can be accessed by your theme or plugin code — [more details here](https://docs.wpvip.com/technical-references/vip-codebase/private-directory/).
-* `themes`: Themes to be made available to your sites – [more details here](https://docs.wpvip.com/technical-references/vip-codebase/themes-on-vip-go/). We recommend keeping the default theme available for [testing purposes](https://docs.wpvip.com/how-tos/prepare-for-site-launch/testing-your-site/).
-* `vip-config`: For custom configuration changes and additional `sunrise.php` [details](https://docs.wpvip.com/technical-references/multisites/sunrise-php/). This folder’s `vip-config.php` can be used to supply things usually found in `wp-config.php`. [More details here](https://docs.wpvip.com/technical-references/vip-codebase/vip-config-directory/).
+* `client-mu-plugins/`: For [always active global plugins](https://docs.wpvip.com/technical-references/vip-codebase/client-mu-plugins-directory/) (similar to `mu-plugins`).
+* `docs/`: Not mounted to production, so [useful for storing documentation](https://docs.wpvip.com/technical-references/vip-codebase/docs-directory/) about an applications features and requirements.
+* `images/`: Store [your site's favicons](https://docs.wpvip.com/technical-references/vip-codebase/images-directory/) here. All other public-facing images should be uploaded or [imported](https://docs.wpvip.com/how-tos/launch-a-site-with-vip/launch-with-vip-migrate-content/) to the WordPress dashboard or stored as part of your `/theme/` assets.
+* `languages/`: For [`.po` and `.mo` translation files](https://docs.wpvip.com/how-tos/upload-languages-to-the-language-directory/), which specify the translated strings for the site.
+* `plugins/`: Your site's [regular plugins](https://docs.wpvip.com/technical-references/vip-codebase/plugins-directory/).
+* `private/`: Provides access to [files that are not directly web accessible](https://docs.wpvip.com/technical-references/vip-codebase/private-directory/), but can be accessed by your theme or plugin code.
+* `themes/`: [Themes available to your sites](https://docs.wpvip.com/technical-references/vip-codebase/themes-on-vip-go/). We recommend keeping the default theme available for [testing purposes](https://docs.wpvip.com/how-tos/prepare-for-site-launch/testing-your-site/).
+* `vip-config/`: For [custom configurations](https://docs.wpvip.com/technical-references/vip-codebase/vip-config-directory/) and additional [`sunrise.php` changes](https://docs.wpvip.com/technical-references/multisites/sunrise-php/). This folder’s `vip-config.php` can be used to supply things usually found in `wp-config.php`..
 
 These directories will also be available on production web servers. Any additional directories created in your GitHub repository that are not included in the above list will not be mounted onto your site, and so will not be web-accessible.
 
