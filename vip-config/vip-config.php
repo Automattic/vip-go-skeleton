@@ -29,12 +29,12 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
 
 /**
  * The VIP_JETPACK_IS_PRIVATE constant is enabled by default in non-production environments.
- * 
+ *
  * It disables programmatic access to content via the WordPress.com REST API and Jetpack Search;
  * subscriptions via the WordPress.com Reader; and syndication via the WordPress.com Firehose.
  *
  * You can disable "private" mode (e.g. for testing) in non-production environment by setting the constant to `true` below (or just by removing the lines).
- * 
+ *
  * @see https://docs.wpvip.com/technical-references/restricting-site-access/controlling-content-distribution-via-jetpack/
  */
 if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) &&
@@ -59,4 +59,14 @@ if ( ! defined( 'VIP_JETPACK_IS_PRIVATE' ) &&
  */
 if ( function_exists( 'newrelic_disable_autorum' ) ) {
 	newrelic_disable_autorum();
+}
+
+/**
+ * Set WP_DEBUG to true for all local or non-production VIP environments to ensure
+ * _doing_it_wrong() notices display in Query Monitor. This also changes the error_reporting level to E_ALL.
+ *
+ * @see https://wordpress.org/support/article/debugging-in-wordpress/#wp_debug
+ */
+if ( ! defined( 'VIP_GO_APP_ENVIRONMENT' ) || ( defined( 'VIP_GO_APP_ENVIRONMENT' ) && 'production' !== VIP_GO_APP_ENVIRONMENT ) ) {
+	define( 'WP_DEBUG', true );
 }
