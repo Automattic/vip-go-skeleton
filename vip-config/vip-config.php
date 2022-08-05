@@ -33,7 +33,7 @@ if ( ! defined( 'WP_POST_REVISIONS' ) ) {
  * It disables programmatic access to content via the WordPress.com REST API and Jetpack Search;
  * subscriptions via the WordPress.com Reader; and syndication via the WordPress.com Firehose.
  *
- * You can disable "private" mode (e.g. for testing) in non-production environment by setting the constant to `true` below (or just by removing the lines).
+ * You can disable "private" mode (e.g. for testing) in non-production environment by setting the constant to `false` below (or just by removing the lines).
  *
  * @see https://docs.wpvip.com/technical-references/restricting-site-access/controlling-content-distribution-via-jetpack/
  */
