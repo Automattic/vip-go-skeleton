@@ -67,6 +67,7 @@ if ( function_exists( 'newrelic_disable_autorum' ) ) {
  *
  * @see https://wordpress.org/support/article/debugging-in-wordpress/#wp_debug
  */
-if ( ! defined( 'VIP_GO_APP_ENVIRONMENT' ) || ( defined( 'VIP_GO_APP_ENVIRONMENT' ) && 'production' !== VIP_GO_APP_ENVIRONMENT ) ) {
+if ( ( ! defined( 'VIP_GO_APP_ENVIRONMENT' ) || ( defined( 'VIP_GO_APP_ENVIRONMENT' ) && 'production' !== VIP_GO_APP_ENVIRONMENT ) )
+	&& ! defined( 'WP_DEBUG' ) ) {
 	define( 'WP_DEBUG', true );
 }
