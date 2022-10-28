@@ -3,8 +3,10 @@
  * Hi there, VIP dev!
  *
  * vip-config.php is where you put things you'd usually put in wp-config.php. Don't worry about database settings
- * and such, we've taken care of that for you. This is just for if you need to define an API key or something
- * of that nature.
+ * and such, we've taken care of that for you. This is a good place to define a constant or something of that
+ * nature. However, consider using environment variables for anything sensitive or environment-specific:
+ *
+ * @see https://docs.wpvip.com/how-tos/manage-environment-variables/
  *
  * WARNING: This file is loaded very early (immediately after `wp-config.php`), which means that most WordPress APIs,
  *   classes, and functions are not available. The code below should be limited to pure PHP.
