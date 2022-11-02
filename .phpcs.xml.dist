@@ -19,7 +19,7 @@
 	<file>./plugins/</file>
 	<!-- Ignoring Files and Folders:
 		https://github.com/squizlabs/PHP_CodeSniffer/wiki/Advanced-Usage#ignoring-files-and-folders -->
-	<exclude-pattern>./themes/twentytwentytwo/</exclude-pattern>
+	<exclude-pattern>./themes/twentytwentythree/</exclude-pattern>
 	<exclude-pattern>./node_modules/</exclude-pattern>
 	<exclude-pattern>./vendor/</exclude-pattern>
 
