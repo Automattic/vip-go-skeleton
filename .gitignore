@@ -6,8 +6,6 @@ package-lock.json
 /plugins/akismet/
 /plugins/advanced-post-cache/
 /plugins/cron-control/
-/plugins/debug-bar/
-/plugins/debug-bar-cron/
 /plugins/gutenberg-ramp/
 /plugins/jetpack/
 /plugins/jetpack-force-2fa/
