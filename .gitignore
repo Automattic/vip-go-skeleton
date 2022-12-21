@@ -1,6 +1,9 @@
-# Development files
-package.json
-package-lock.json
+# Dependencies
+## Avoid any node_modules folders anywhere in the repo; see see https://docs.wpvip.com/how-tos/manage-dependencies/#version-management
+node_modules
+## Avoid package*.json files only at repo root
+/package.json
+/package-lock.json
 
 # Built-in; ship with vip-go-mu-plugins
 /plugins/akismet/
