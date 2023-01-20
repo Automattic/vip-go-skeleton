@@ -1,0 +1,136 @@
+services:
+  devtools:
+    image: 'ghcr.io/automattic/vip-container-images/dev-tools:0.9'
+    command: sleep infinity
+    volumes:
+      - type: volume
+        source: devtools
+        target: /dev-tools
+
+  nginx:
+    build:
+      context: ./.docker/nginx
+      dockerfile: Dockerfile
+    environment:
+      - HOST_UID=${HOST_UID-1000}
+      - HOST_GID=${HOST_GID-1000}
+    ports:
+      - 80
+    volumes:
+      - wp-wordpress:/wp
+      - ../:/wp/wp-content
+      - wp-uploads:/wp/wp-content/uploads
+      - type: volume
+        source: mu-plugins
+        target: /wp/wp-content/mu-plugins
+        volume:
+          nocopy: true
+
+  php:
+    build:
+      context: ./.docker/php-fpm
+      dockerfile: Dockerfile
+    environment:
+      - HOST_UID=${HOST_UID-1000}
+      - HOST_GID=${HOST_GID-1000}
+    working_dir: /wp
+    volumes:
+      - type: volume
+        source: devtools
+        target: /dev-tools
+        volume:
+          nocopy: true
+      - wp-wordpress:/wp
+      - wp-config:/wp/config
+      - wp-log:/wp/log
+      - ../:/wp/wp-content
+      - wp-uploads:/wp/wp-content/uploads
+      - type: volume
+        source: mu-plugins
+        target: /wp/wp-content/mu-plugins
+        volume:
+          nocopy: true
+    depends_on:
+      - mailhog
+      - memcached
+      - database
+      - elasticsearch
+
+  database:
+    image: 'mariadb:10.3'
+    command: >-
+      docker-entrypoint.sh mysqld
+      --sql-mode=ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+      --max_allowed_packet=67M
+    ports:
+      - '127.0.0.1::3306'
+    environment:
+      MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'true'
+    volumes:
+      - 'database_data:/var/lib/mysql'
+
+  memcached:
+    image: 'memcached:1.6-alpine3.16'
+
+  wordpress:
+    build:
+      context: ./.docker/wordpress
+      dockerfile: Dockerfile
+    environment:
+      - HOST_UID=${HOST_UID-1000}
+      - HOST_GID=${HOST_GID-1000}
+    volumes:
+      - wp-wordpress:/shared
+
+  vip-mu-plugins:
+    build:
+      context: ./.docker/mu-plugins
+      dockerfile: Dockerfile
+    environment:
+      - HOST_UID=${HOST_UID-1000}
+      - HOST_GID=${HOST_GID-1000}
+    volumes:
+      - 'mu-plugins:/shared'
+
+  elasticsearch:
+    image: 'elasticsearch:7.17.8'
+    command: /usr/local/bin/docker-entrypoint.sh
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: 'false'
+    volumes:
+      - 'search_data:/usr/share/elasticsearch/data'
+
+  phpmyadmin:
+    image: 'phpmyadmin/phpmyadmin:latest'
+    environment:
+      MYSQL_ROOT_PASSWORD: ''
+      PMA_HOSTS: database
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: ''
+      UPLOAD_LIMIT: '4G'
+    ports:
+      - '127.0.0.1::80'
+
+  mailhog:
+    image: 'mailhog/mailhog:v1.0.1'
+    user: root
+    environment:
+      MH_API_BIND_ADDR: ':80'
+      MH_UI_BIND_ADDR: ':80'
+    ports:
+      - '127.0.0.1::80'
+    command: MailHog
+
+volumes:
+  devtools:
+  mu-plugins:
+
+  wp-config:
+  wp-log:
+  wp-uploads:
+  wp-wordpress:
+
+  database_data:
+  search_data:
