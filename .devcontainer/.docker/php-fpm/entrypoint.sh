@@ -4,7 +4,7 @@ set -x
 
 if [ -n "${HOST_UID}" ] && [ -n "${HOST_GID}" ]; then
     echo "Changing UID and GID to ${HOST_UID}:${HOST_GID}"
-    usermod -u "${HOST_UID}" www-data
+    usermod -u "${HOST_UID}" -d /wp -s /bin/bash www-data
     groupmod -g "${HOST_GID}" www-data
 fi
 
