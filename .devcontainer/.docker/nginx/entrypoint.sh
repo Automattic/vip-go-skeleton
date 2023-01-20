@@ -2,7 +2,7 @@
 
 if [ -n "${HOST_UID}" ] && [ -n "${HOST_GID}" ]; then
     echo "Changing UID and GID to ${HOST_UID}:${HOST_GID}"
-    usermod -u "${HOST_UID}" nginx
+    usermod -u "${HOST_UID}" -d /wp -s /bin/bash nginx
     groupmod -g "${HOST_GID}" nginx
 fi
 
