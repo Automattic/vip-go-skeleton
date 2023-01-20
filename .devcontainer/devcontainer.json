@@ -1,6 +1,8 @@
 {
     "name": "Codespace for Local Development Environment",
     "dockerComposeFile": "docker-compose.yml",
+    "overrideCommand": false,
+    "userEnvProbe": "none",
     "service": "php",
     "forwardPorts": ["nginx:80", "phpmyadmin:80", "mailhog:80"],
     "portsAttributes": {
