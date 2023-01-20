@@ -22,7 +22,7 @@
         "XDEBUG": "disable"
     },
     "remoteEnv": {
-        "ENABLE_ELASTICSEARCH": "true",
+        "ENABLE_ELASTICSEARCH": "",
         "ENABLE_MAILHOG": "true",
         "MULTISITE": ""
     },

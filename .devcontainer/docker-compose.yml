@@ -54,7 +54,7 @@ services:
       - mailhog
       - memcached
       - database
-      - elasticsearch
+      # - elasticsearch
 
   database:
     image: 'mariadb:10.3'
@@ -92,14 +92,14 @@ services:
     volumes:
       - 'mu-plugins:/shared'
 
-  elasticsearch:
-    image: 'elasticsearch:7.17.8'
-    command: /usr/local/bin/docker-entrypoint.sh
-    environment:
-      discovery.type: single-node
-      xpack.security.enabled: 'false'
-    volumes:
-      - 'search_data:/usr/share/elasticsearch/data'
+  # elasticsearch:
+  #   image: 'elasticsearch:7.17.8'
+  #   command: /usr/local/bin/docker-entrypoint.sh
+  #   environment:
+  #     discovery.type: single-node
+  #     xpack.security.enabled: 'false'
+  #   volumes:
+  #     - 'search_data:/usr/share/elasticsearch/data'
 
   phpmyadmin:
     image: 'phpmyadmin/phpmyadmin:latest'
