@@ -33,6 +33,9 @@
     },
     "workspaceFolder": "/wp/wp-content",
     "remoteUser": "www-data",
+    "hostRequirements": {
+        "memory": "8gb"
+    },
     "customizations": {
         "vscode": {
             "extensions": [
