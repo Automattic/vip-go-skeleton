@@ -19,7 +19,9 @@
         }
     },
     "containerEnv": {
-        "XDEBUG": "disable",
+        "XDEBUG": "disable"
+    },
+    "remoteEnv": {
         "ENABLE_ELASTICSEARCH": "true",
         "ENABLE_MAILHOG": "true",
         "MULTISITE": ""
