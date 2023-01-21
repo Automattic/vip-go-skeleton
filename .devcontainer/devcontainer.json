@@ -24,11 +24,11 @@
     },
     "initializeCommand": "echo \"HOST_UID=$(id -u)\nHOST_GID=$(id -g)\" > .devcontainer/.env",
     "updateContentCommand": {
-        "composer": "composer install --no-interaction"
+        "composer": "composer install --no-interaction",
+        "install": ["/bin/sh", "-x", "/dev-tools/setup.sh", "database", "root", "http://test.vipdev.lndo.site/", "Test"]
     },
     "postCreateCommand": {
         "install": ["/bin/sh", "-x", "/dev-tools/setup.sh", "database", "root", "http://test.vipdev.lndo.site/", "Test"]
     },
-    "workspaceFolder": "/wp/wp-content",
-    "remoteUser": "www-data"
+    "workspaceFolder": "/wp/wp-content"
 }
