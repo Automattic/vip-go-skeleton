@@ -23,7 +23,6 @@
         "MULTISITE": ""
     },
     "initializeCommand": "echo \"HOST_UID=$(id -u)\nHOST_GID=$(id -g)\" > .devcontainer/.env",
-    },
     "workspaceFolder": "/wp/wp-content",
     "remoteUser": "www-data"
 }
