@@ -1,11 +1,8 @@
 services:
   devtools:
     image: 'ghcr.io/automattic/vip-container-images/dev-tools:0.9'
-    command: sleep infinity
     volumes:
-      - type: volume
-        source: devtools
-        target: /dev-tools
+      - devtools:/dev-tools
 
   nginx:
     build:
@@ -52,6 +49,8 @@ services:
           nocopy: true
     depends_on:
       - database
+    links:
+      - database
 
   database:
     image: 'mariadb:10.3'
@@ -96,4 +95,3 @@ volumes:
   wp-wordpress:
 
   database_data:
-  search_data:
