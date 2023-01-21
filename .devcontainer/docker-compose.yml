@@ -47,10 +47,6 @@ services:
         target: /wp/wp-content/mu-plugins
         volume:
           nocopy: true
-    depends_on:
-      - database
-    links:
-      - database
 
   database:
     image: 'mariadb:10.3'
@@ -65,15 +61,15 @@ services:
     volumes:
       - 'database_data:/var/lib/mysql'
 
-  wordpress:
-    build:
-      context: ./.docker/wordpress
-      dockerfile: Dockerfile
-    environment:
-      - HOST_UID=${HOST_UID-1000}
-      - HOST_GID=${HOST_GID-1000}
-    volumes:
-      - wp-wordpress:/shared
+  # wordpress:
+  #   build:
+  #     context: ./.docker/wordpress
+  #     dockerfile: Dockerfile
+  #   environment:
+  #     - HOST_UID=${HOST_UID-1000}
+  #     - HOST_GID=${HOST_GID-1000}
+  #   volumes:
+  #     - wp-wordpress:/shared
 
   vip-mu-plugins:
     build:

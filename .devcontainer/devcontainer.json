@@ -4,7 +4,6 @@
     "overrideCommand": false,
     "userEnvProbe": "none",
     "service": "php",
-    "forwardPorts": ["nginx:80"],
     "containerEnv": {
         "XDEBUG": "disable"
     },
