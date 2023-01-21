@@ -51,10 +51,7 @@ services:
         volume:
           nocopy: true
     depends_on:
-      - mailhog
-      - memcached
       - database
-      # - elasticsearch
 
   database:
     image: 'mariadb:10.3'
@@ -68,9 +65,6 @@ services:
       MARIADB_ALLOW_EMPTY_ROOT_PASSWORD: 'true'
     volumes:
       - 'database_data:/var/lib/mysql'
-
-  memcached:
-    image: 'memcached:1.6-alpine3.16'
 
   wordpress:
     build:
@@ -91,37 +85,6 @@ services:
       - HOST_GID=${HOST_GID-1000}
     volumes:
       - 'mu-plugins:/shared'
-
-  # elasticsearch:
-  #   image: 'elasticsearch:7.17.8'
-  #   command: /usr/local/bin/docker-entrypoint.sh
-  #   environment:
-  #     discovery.type: single-node
-  #     xpack.security.enabled: 'false'
-  #   volumes:
-  #     - 'search_data:/usr/share/elasticsearch/data'
-
-  phpmyadmin:
-    image: 'phpmyadmin/phpmyadmin:latest'
-    environment:
-      MYSQL_ROOT_PASSWORD: ''
-      PMA_HOSTS: database
-      PMA_PORT: 3306
-      PMA_USER: root
-      PMA_PASSWORD: ''
-      UPLOAD_LIMIT: '4G'
-    ports:
-      - '127.0.0.1::80'
-
-  mailhog:
-    image: 'mailhog/mailhog:v1.0.1'
-    user: root
-    environment:
-      MH_API_BIND_ADDR: ':80'
-      MH_UI_BIND_ADDR: ':80'
-    ports:
-      - '127.0.0.1::80'
-    command: MailHog
 
 volumes:
   devtools:
