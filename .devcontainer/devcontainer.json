@@ -3,7 +3,7 @@
     "dockerComposeFile": "docker-compose.yml",
     "overrideCommand": false,
     "userEnvProbe": "none",
-    "service": "php",
+    "service": "nginx",
     "containerEnv": {
         "XDEBUG": "disable"
     },
