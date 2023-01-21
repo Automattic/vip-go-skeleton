@@ -5,15 +5,6 @@
     "userEnvProbe": "none",
     "service": "php",
     "forwardPorts": ["nginx:80"],
-    "portsAttributes": {
-        "nginx:80": {
-            "label": "Application"
-        },
-        "php:9000": {
-            "label": "PHP-FPM",
-            "onAutoForward": "ignore"
-        }
-    },
     "containerEnv": {
         "XDEBUG": "disable"
     },
