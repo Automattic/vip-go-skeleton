@@ -33,7 +33,7 @@
         "composer": "composer install --no-interaction"
     },
     "postCreateCommand": {
-        "install": "/usr/local/setup.sh"
+        "install": "/usr/local/bin/setup.sh"
     },
     "workspaceFolder": "/wp/wp-content",
     "remoteUser": "www-data",
