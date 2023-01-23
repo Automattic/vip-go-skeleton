@@ -10,4 +10,7 @@ if [ -n "${HOST_UID}" ] && [ -n "${HOST_GID}" ]; then
     fi
 fi
 
+echo "Listening on http://localhost:${PORT}/"
+echo "Listening on http://localhost:8080/"
+
 exec /docker-entrypoint.sh nginx -g "daemon off;"
