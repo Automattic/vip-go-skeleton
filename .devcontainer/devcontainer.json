@@ -3,16 +3,51 @@
     "dockerComposeFile": "docker-compose.yml",
     "overrideCommand": false,
     "userEnvProbe": "none",
-    "service": "nginx",
+    "service": "php",
+    "forwardPorts": ["nginx:80", "phpmyadmin:80", "mailhog:80"],
+    "portsAttributes": {
+        "nginx:80": {
+            "label": "Application"
+        },
+        "phpmyadmin:80": {
+            "label": "phpMyAdmin"
+        },
+        "mailhog:80": {
+            "label": "MailHog"
+        },
+        "php:9000": {
+            "label": "PHP-FPM",
+            "onAutoForward": "ignore"
+        }
+    },
     "containerEnv": {
         "XDEBUG": "disable"
     },
     "remoteEnv": {
         "ENABLE_ELASTICSEARCH": "",
-        "ENABLE_MAILHOG": "",
+        "ENABLE_MAILHOG": "true",
         "MULTISITE": ""
     },
     "initializeCommand": "echo \"HOST_UID=$(id -u)\nHOST_GID=$(id -g)\" > .devcontainer/.env",
+    "updateContentCommand": {
+        "composer": "composer install --no-interaction"
+    },
+    "postCreateCommand": {
+        "install": ["/bin/sh", "-x", "/dev-tools/setup.sh", "database", "root", "http://test.vipdev.lndo.site/", "Test"]
+    },
     "workspaceFolder": "/wp/wp-content",
-    "remoteUser": "nginx"
+    "remoteUser": "www-data",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "dlech.chmod",
+                "dbaeumer.vscode-eslint",
+                "bmewburn.vscode-intelephense-client",
+                "wongjn.php-sniffer",
+                "esbenp.prettier-vscode",
+                "MehediDracula.php-namespace-resolver",
+                "johnbillion.vscode-wordpress-hooks"
+            ]
+        }
+    }
 }
