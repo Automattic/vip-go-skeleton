@@ -33,7 +33,7 @@
         "composer": "composer install --no-interaction"
     },
     "postCreateCommand": {
-        "install": ["/bin/sh", "-x", "/dev-tools/setup.sh", "database", "root", "http://test.vipdev.lndo.site/", "Test"]
+        "install": "/usr/local/setup.sh"
     },
     "workspaceFolder": "/wp/wp-content",
     "remoteUser": "www-data",
