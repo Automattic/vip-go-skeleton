@@ -47,3 +47,6 @@ phpcs.xml
 
 # Composer (repo root only)
 /vendor/
+
+/mu-plugins/
+/uploads/

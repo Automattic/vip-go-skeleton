@@ -4,15 +4,15 @@
     "overrideCommand": false,
     "userEnvProbe": "none",
     "service": "php",
-    "forwardPorts": ["nginx:80", "phpmyadmin:80", "mailhog:80"],
+    "forwardPorts": ["nginx:8080", "phpmyadmin:8081", "mailhog:8082"],
     "portsAttributes": {
-        "nginx:80": {
+        "nginx:8080": {
             "label": "Application"
         },
-        "phpmyadmin:80": {
+        "phpmyadmin:8081": {
             "label": "phpMyAdmin"
         },
-        "mailhog:80": {
+        "mailhog:8082": {
             "label": "MailHog"
         },
         "php:9000": {
