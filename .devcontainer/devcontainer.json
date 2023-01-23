@@ -35,17 +35,13 @@
     },
     "workspaceFolder": "/wp/wp-content",
     "remoteUser": "www-data",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "dlech.chmod",
-                "dbaeumer.vscode-eslint",
-                "bmewburn.vscode-intelephense-client",
-                "wongjn.php-sniffer",
-                "esbenp.prettier-vscode",
-                "MehediDracula.php-namespace-resolver",
-                "johnbillion.vscode-wordpress-hooks"
-            ]
-        }
-    }
+    "extensions": [
+        "dlech.chmod",
+        "dbaeumer.vscode-eslint",
+        "bmewburn.vscode-intelephense-client",
+        "wongjn.php-sniffer",
+        "esbenp.prettier-vscode",
+        "MehediDracula.php-namespace-resolver",
+        "johnbillion.vscode-wordpress-hooks"
+    ]
 }
