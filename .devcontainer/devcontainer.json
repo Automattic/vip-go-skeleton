@@ -2,7 +2,7 @@
     "name": "Codespace for Local Development Environment",
     "dockerComposeFile": "docker-compose.yml",
     "service": "php",
-    "forwardPorts": [8080, 8081, 8082],
+    "forwardPorts": [80, 8081, 8082],
     "portsAttributes": {
         "8080": {
             "label": "Application"
@@ -12,10 +12,6 @@
         },
         "8082": {
             "label": "MailHog"
-        },
-        "php:9000": {
-            "label": "PHP-FPM",
-            "onAutoForward": "ignore"
         }
     },
     "containerEnv": {
@@ -26,22 +22,8 @@
         "ENABLE_MAILHOG": "true",
         "MULTISITE": ""
     },
-    "initializeCommand": "echo \"HOST_UID=$(id -u)\nHOST_GID=$(id -g)\" > .devcontainer/.env",
-    "updateContentCommand": {
-        "composer": "composer install --no-interaction"
-    },
-    "postCreateCommand": {
-        "install": "/usr/local/bin/setup.sh"
-    },
+    "updateContentCommand": "cd /workspaces/${localWorkspaceFolderBasename} && composer install || true",
+    "postCreateCommand": "/usr/local/bin/setup.sh",
     "workspaceFolder": "/wp/wp-content",
-    "remoteUser": "www-data",
-    "extensions": [
-        "dlech.chmod",
-        "dbaeumer.vscode-eslint",
-        "bmewburn.vscode-intelephense-client",
-        "wongjn.php-sniffer",
-        "esbenp.prettier-vscode",
-        "MehediDracula.php-namespace-resolver",
-        "johnbillion.vscode-wordpress-hooks"
-    ]
+    "remoteUser": "root"
 }
