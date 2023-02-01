@@ -2,6 +2,24 @@
 
 Welcome to WordPress VIP! This repository is a starting point for building your WordPress VIP application, including all the base directories.
 
+# Codespaces Preview
+
+This is a preview/discovery version of using Codespaces for spinning up VIP-compatible environments.
+
+On GitHub, go to the repos and Press the code button, and press "create codespace on preview/dev-container".
+
+1. Start the codespace.
+1. Wait until it builds and fully initalizes.
+1. Wait until the UI fully connects.
+1. Open Ports tab.
+1. Click a globe icon to open the preview URL in the browser.
+
+## Preview limitations
+
+1. You'll get the default clean database.
+1. Elasticsearch is commented out, it works but needs a heavier machine class (4 cores, 8GB RAM minimum)
+1. Things may break as we tinker.
+
 ## Guidebooks
 
 We recommend starting with one of the following WordPress VIP guidebooks:
