@@ -2,7 +2,7 @@
     "name": "Codespace for Local Development Environment",
     "dockerComposeFile": "docker-compose.yml",
     "service": "php",
-    "forwardPorts": [80, 8081, 8082],
+    "forwardPorts": [8080, 8081, 8082],
     "portsAttributes": {
         "8080": {
             "label": "Application"
