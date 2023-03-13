@@ -37,27 +37,68 @@
     },
     "postCreateCommand": "/usr/local/bin/setup-wordpress.sh",
     "features": {
-        "ghcr.io/sjinks/test-cs-images/dev-tools:1": {},
-        "ghcr.io/sjinks/test-cs-images/mailhog:1": {},
+        // Mandatory features
+        "ghcr.io/sjinks/test-cs-images/nginx:1": {
+            // Set the URL to redirect for missing media files
+            "mediaRedirectURL": ""
+        },
+        "ghcr.io/sjinks/test-cs-images/php:1": {
+            // PHP version to use: 7.4, 8.0, 8.1, 8.2
+            "version": "8.0",
+            "composer": true
+        },
         "ghcr.io/sjinks/test-cs-images/mariadb:1": {
+            // Set to false if you don't want to persist the database between rebuilds
             "installDatabaseToWorkspaces": true
         },
-        "ghcr.io/sjinks/test-cs-images/mc:1": {
-            "enabled": true
-        },
-        "ghcr.io/sjinks/test-cs-images/memcached:1": {},
-        "ghcr.io/sjinks/test-cs-images/nginx:1": {},
-        "ghcr.io/sjinks/test-cs-images/php:1": {},
-        "ghcr.io/sjinks/test-cs-images/phpmyadmin:1": {
-            "enabled": true
-        },
-        "ghcr.io/sjinks/test-cs-images/vip-cli:1": {},
-        "ghcr.io/sjinks/test-cs-images/vip-go-mu-plugins:1": {},
         "ghcr.io/sjinks/test-cs-images/wordpress:1": {
+            // WordPress version: latest, nightly or anything that "wp core download" understands
+            "version": "latest",
+            // Set to false if you don't want to persist the wp-content/uploads between rebuilds
             "moveUploadsToWorkspaces": true,
-            "domain": "${localWorkspaceFolderBasename}.lndo.site"
+            // Set to true if you want to use the WordPress multisite feature
+            "multisite": false,
+            // GitHub Codespaces doesn't support subdomain multisite; we have to use subdirectory instead
+            "multisiteStyle": "subdirectory"
         },
-        "ghcr.io/sjinks/test-cs-images/wp-cli:1": {},
-        "ghcr.io/sjinks/test-cs-images/xdebug:1": {}
+        "ghcr.io/sjinks/test-cs-images/wp-cli:1": {
+            // Set to true if you want to use nightly builds of WP CLI
+            "nightly": false
+        },
+        "ghcr.io/sjinks/test-cs-images/vip-go-mu-plugins:1": {
+            "enabled": true,
+            "retainGit": false
+        },
+        "ghcr.io/sjinks/test-cs-images/dev-tools:1": {},
+        // Recommended features
+        "ghcr.io/sjinks/test-cs-images/memcached:1": {
+            // While it is possible to disable memcached (along with the Object Cache), it is not recommended
+            "enabled": true
+        },
+        "ghcr.io/sjinks/test-cs-images/vip-cli:1": {
+            // Set to false if you don't need the VIP CLI
+            "enabled": true
+        },
+        // Tools
+        "ghcr.io/sjinks/test-cs-images/mailhog:1": {
+            // Set to false if you don't need MailHog
+            "enabled": true
+        },
+        "ghcr.io/sjinks/test-cs-images/phpmyadmin:1": {
+            // Set to false if you don't need phpMyAdmin
+            "enabled": true
+        },
+        // Debugging
+        "ghcr.io/sjinks/test-cs-images/xdebug:1": {
+            // Set to true to enable XDebug (you can enable it later in the container as well)
+            "enabled": false,
+            // Set XDebug mode; see https://xdebug.org/docs/all_settings#mode
+            "mode": "debug"
+        },
+        // Misc
+        "ghcr.io/sjinks/test-cs-images/mc:1": {
+            // Set to true if you want to use Midnight Commander
+            "enabled": false
+        }
     }
 }
