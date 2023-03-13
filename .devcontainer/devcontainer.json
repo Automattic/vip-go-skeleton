@@ -1,0 +1,63 @@
+{
+    "name": "Test Dev Environment",
+    "image": "ghcr.io/sjinks/test-cs-images/alpine-base:1.0.2",
+    "overrideCommand": false,
+    "forwardPorts": [80, 81, 8025],
+    "portsAttributes": {
+        "80": {
+            "label": "Application",
+            "onAutoForward": "notify",
+            "elevateIfNeeded": true
+        },
+        "81": {
+            "label": "phpMyAdmin",
+            "onAutoForward": "notify",
+            "elevateIfNeeded": true
+        },
+        "1025": {
+            "label": "MailHog SMTP",
+            "onAutoForward": "ignore"
+        },
+        "3306": {
+            "label": "MySQL",
+            "onAutoForward": "ignore"
+        },
+        "8025": {
+            "label": "MailHog",
+            "onAutoForward": "notify"
+        },
+        "9000": {
+            "label": "php-fpm",
+            "onAutoForward": "ignore"
+        },
+        "9003": {
+            "label": "XDebug Client Port",
+            "onAutoForward": "notify"
+        }
+    },
+    "postCreateCommand": "/usr/local/bin/setup-wordpress.sh",
+    "features": {
+        "ghcr.io/sjinks/test-cs-images/dev-tools:1": {},
+        "ghcr.io/sjinks/test-cs-images/mailhog:1": {},
+        "ghcr.io/sjinks/test-cs-images/mariadb:1": {
+            "installDatabaseToWorkspaces": true
+        },
+        "ghcr.io/sjinks/test-cs-images/mc:1": {
+            "enabled": true
+        },
+        "ghcr.io/sjinks/test-cs-images/memcached:1": {},
+        "ghcr.io/sjinks/test-cs-images/nginx:1": {},
+        "ghcr.io/sjinks/test-cs-images/php:1": {},
+        "ghcr.io/sjinks/test-cs-images/phpmyadmin:1": {
+            "enabled": true
+        },
+        "ghcr.io/sjinks/test-cs-images/vip-cli:1": {},
+        "ghcr.io/sjinks/test-cs-images/vip-go-mu-plugins:1": {},
+        "ghcr.io/sjinks/test-cs-images/wordpress:1": {
+            "moveUploadsToWorkspaces": true,
+            "domain": "${localWorkspaceFolderBasename}.lndo.site"
+        },
+        "ghcr.io/sjinks/test-cs-images/wp-cli:1": {},
+        "ghcr.io/sjinks/test-cs-images/xdebug:1": {}
+    }
+}
