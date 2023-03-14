@@ -1,6 +1,6 @@
 {
     "name": "Test Dev Environment",
-    "image": "ghcr.io/sjinks/test-cs-images/alpine-base:1.0.2",
+    "image": "ghcr.io/sjinks/test-cs-images/alpine-base:latest",
     "overrideCommand": false,
     "forwardPorts": [80, 81, 8025],
     "portsAttributes": {
