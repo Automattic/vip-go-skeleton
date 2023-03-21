@@ -79,6 +79,13 @@
             // Set to false if you don't need the VIP CLI
             "enabled": true
         },
+        // Elasticsearch
+        "ghcr.io/sjinks/test-cs-images/elasticsearch:1": {
+            // Set to true if you want ES. It may need more powerful machine to run (at least 8 GB RAM)
+            "enabled": false,
+            // Set to false if you don't want to persist the ES data between rebuilds
+            "installDataToWorkspaces": true
+        },
         // Tools
         "ghcr.io/sjinks/test-cs-images/mailhog:1": {
             // Set to false if you don't need MailHog
