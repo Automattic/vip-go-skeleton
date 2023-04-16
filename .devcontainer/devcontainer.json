@@ -113,7 +113,7 @@
         },
         "ghcr.io/automattic/vip-codespaces/ssh:latest": {
             // Set to true if you want an SSH server in your dev environment
-            "enabled": true
+            "enabled": false
         }
     },
     "customizations": {
