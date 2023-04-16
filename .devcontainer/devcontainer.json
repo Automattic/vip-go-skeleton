@@ -87,9 +87,13 @@
             "installDataToWorkspaces": true
         },
         // Tools
-        "ghcr.io/automattic/vip-codespaces/mailhog:latest": {
-            // Set to false if you don't need MailHog
+        "ghcr.io/automattic/vip-codespaces/mailpit:latest": {
+            // Set to false if you don't need Mailpit. Warning: you can have either Mailhog or Mailpit, not both
             "enabled": true
+        },
+        "ghcr.io/automattic/vip-codespaces/mailhog:latest": {
+            // Set to false if you don't need MailHog. Warning: you can have either Mailhog or Mailpit, not both
+            "enabled": false
         },
         "ghcr.io/automattic/vip-codespaces/phpmyadmin:latest": {
             // Set to false if you don't need phpMyAdmin
