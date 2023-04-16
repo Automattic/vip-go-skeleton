@@ -110,6 +110,10 @@
         "ghcr.io/automattic/vip-codespaces/mc:latest": {
             // Set to true if you want to use Midnight Commander
             "enabled": false
+        },
+        "ghcr.io/automattic/vip-codespaces/ssh:latest": {
+            // Set to true if you want an SSH server in your dev environment
+            "enabled": true
         }
     },
     "customizations": {
