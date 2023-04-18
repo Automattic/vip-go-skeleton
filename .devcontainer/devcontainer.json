@@ -35,6 +35,7 @@
             "onAutoForward": "notify"
         }
     },
+    "updateContentCommand": "composer install",
     "postCreateCommand": "/usr/local/bin/setup-wordpress.sh",
     "features": {
         // Mandatory features
