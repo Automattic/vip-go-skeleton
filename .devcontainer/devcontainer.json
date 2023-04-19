@@ -135,7 +135,16 @@
                 "zhiayang.tabindentspacealign"
             ],
             "settings": {
-                "intelephense.environment.documentRoot": "/wp"
+                "intelephense.environment.documentRoot": "/wp",
+                "intelephense.environment.includePaths": ["/wp"],
+                "intelephense.environment.phpVersion": "8.0.0",
+                "intelephense.stubs": [
+                    "apcu", "bcmath", "calendar", "Core", "ctype", "curl", "date", "dom", "exif", "fileinfo", "filter", "fpm", "ftp", "gd", "gmagick", "gmp", "gnupg",
+                    "hash", "iconv", "igbinary", "intl", "json", "libxml", "mbstring", "mcrypt", "memcache", "memcached", "meta", "mysqli", "newrelic", "openssl",
+                    "pcntl", "pcre", "PDO", "pdo_mysql", "pdo_sqlite", "Phar", "posix", "random", "Reflection", "session", "shmop", "SimpleXML", "soap", "sockets",
+                    "sodium", "SPL", "sqlite3", "ssh2", "standard", "superglobals", "sysvsem", "sysvshm", "tokenizer", "xdebug", "xml", "xmlreader", "xmlwriter",
+                    "Zend OPcache", "zip", "zlib"
+                ]
             }
         }
     }
