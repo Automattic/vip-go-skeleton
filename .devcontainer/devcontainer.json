@@ -133,7 +133,10 @@
                 "johnbillion.vscode-wordpress-hooks",
                 "ms-azuretools.vscode-docker",
                 "zhiayang.tabindentspacealign"
-            ]
+            ],
+            "settings": {
+                "intelephense.environment.documentRoot": "/wp"
+            }
         }
     }
 }
