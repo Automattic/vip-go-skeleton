@@ -15,7 +15,7 @@
             "elevateIfNeeded": true
         },
         "1025": {
-            "label": "MailHog/Mailpit SMTP",
+            "label": "Mailpit SMTP",
             "onAutoForward": "ignore"
         },
         "3306": {
@@ -23,7 +23,7 @@
             "onAutoForward": "ignore"
         },
         "8025": {
-            "label": "MailHog/Mailpit",
+            "label": "Mailpit",
             "onAutoForward": "notify"
         },
         "9000": {
@@ -31,14 +31,16 @@
             "onAutoForward": "ignore"
         },
         "9003": {
-            "label": "XDebug Client Port",
+            "label": "Xdebug Client Port",
             "onAutoForward": "notify"
         }
     },
-    "updateContentCommand": "composer install -n",
+    "updateContentCommand": "composer install -n || true",
     "postCreateCommand": "/usr/local/bin/setup-wordpress.sh",
     "features": {
-        // Mandatory features
+        // *************************
+        // *** Required features ***
+        // *************************
         "ghcr.io/automattic/vip-codespaces/nginx:latest": {
             // Set the URL to redirect for missing media files
             "mediaRedirectURL": ""
@@ -71,7 +73,9 @@
             "retainGit": false
         },
         "ghcr.io/automattic/vip-codespaces/dev-tools:latest": {},
-        // Recommended features
+        // *************************
+        // *** Optional features ***
+        // *************************
         "ghcr.io/automattic/vip-codespaces/memcached:latest": {
             // While it is possible to disable memcached (along with the Object Cache), it is not recommended
             "enabled": true
@@ -89,12 +93,8 @@
         },
         // Tools
         "ghcr.io/automattic/vip-codespaces/mailpit:latest": {
-            // Set to false if you don't need Mailpit. Warning: you can have either Mailhog or Mailpit, not both
+            // Set to false if you don't need Mailpit.
             "enabled": true
-        },
-        "ghcr.io/automattic/vip-codespaces/mailhog:latest": {
-            // Set to false if you don't need MailHog. Warning: you can have either Mailhog or Mailpit, not both
-            "enabled": false
         },
         "ghcr.io/automattic/vip-codespaces/phpmyadmin:latest": {
             // Set to false if you don't need phpMyAdmin
