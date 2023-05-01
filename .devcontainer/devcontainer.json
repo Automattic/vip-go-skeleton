@@ -42,30 +42,31 @@
         // *** Required features ***
         // *************************
         "ghcr.io/automattic/vip-codespaces/nginx:latest": {
-            // Set the URL to redirect for missing media files
+            // Set to the URL of a VIP Platform site where requests for missing media files can be redirected.
+            // Example: "mediaRedirectURL": "https://example.com"
             "mediaRedirectURL": ""
         },
         "ghcr.io/automattic/vip-codespaces/php:latest": {
-            // PHP version to use: 8.0, 8.1, 8.2
+            // PHP version options: 8.0, 8.1, 8.2
             "version": "8.0",
             "composer": true
         },
         "ghcr.io/automattic/vip-codespaces/mariadb:latest": {
-            // Set to false if you don't want to persist the database between rebuilds
+            // Set to false to prevent the database content from persisting between rebuilds.
             "installDatabaseToWorkspaces": true
         },
         "ghcr.io/automattic/vip-codespaces/wordpress:latest": {
-            // WordPress version: latest, nightly or anything that "wp core download" understands
+            // WordPress version: Accepts 'latest', 'nightly', or a version number.
             "version": "latest",
-            // Set to false if you don't want to persist the wp-content/uploads between rebuilds
+            // Set to false to prevent wp-content/uploads content from persisting between rebuilds.
             "moveUploadsToWorkspaces": true,
-            // Set to true if you want to use the WordPress multisite feature
+            // Set to true to create the environment as a WordPress multisite.
             "multisite": false,
-            // GitHub Codespaces doesn't support subdomain multisite; we have to use subdirectory instead
+            // GitHub Codespaces only supports the subdirectory network type for multisite; subdomain cannot be used.
             "multisiteStyle": "subdirectory"
         },
         "ghcr.io/automattic/vip-codespaces/wp-cli:latest": {
-            // Set to true if you want to use nightly builds of WP CLI
+            // Set to true to enable nightly builds of WP-CLI.
             "nightly": false
         },
         "ghcr.io/automattic/vip-codespaces/vip-go-mu-plugins:latest": {
@@ -77,43 +78,45 @@
         // *** Optional features ***
         // *************************
         "ghcr.io/automattic/vip-codespaces/memcached:latest": {
-            // While it is possible to disable memcached (along with the Object Cache), it is not recommended
+            // Set to false to disable memcached and the object cache (this is not recommended).
             "enabled": true
         },
         "ghcr.io/automattic/vip-codespaces/vip-cli:latest": {
-            // Set to false if you don't need the VIP CLI
+            // Set to false to disable VIP-CLI.
             "enabled": true
         },
         // Elasticsearch
         "ghcr.io/automattic/vip-codespaces/elasticsearch:latest": {
-            // Set to true if you want ES. It may need more powerful machine to run (at least 8 GB RAM)
+            // Set to true to enable Elasticsearch. 
+            // This feature requires the local machine to have at least 8 GB RAM.
             "enabled": false,
-            // Set to false if you don't want to persist the ES data between rebuilds
+            // Set to false to prevent Elasticsearch data from persisting between rebuilds.
             "installDataToWorkspaces": true
         },
         // Tools
         "ghcr.io/automattic/vip-codespaces/mailpit:latest": {
-            // Set to false if you don't need Mailpit.
+            // Set to false to disable Mailpit.
             "enabled": true
         },
         "ghcr.io/automattic/vip-codespaces/phpmyadmin:latest": {
-            // Set to false if you don't need phpMyAdmin
+            // Set to false to disable phpMyAdmin.
             "enabled": true
         },
         // Debugging
         "ghcr.io/automattic/vip-codespaces/xdebug:latest": {
-            // Set to true to enable XDebug (you can enable it later in the container as well)
+            // Set to true to enable XDebug. 
+            // This setting can also be updated with CLI commands in the terminal.
             "enabled": false,
-            // Set XDebug mode; see https://xdebug.org/docs/all_settings#mode
+            // Set XDebug mode. Accepted value options listed here: https://xdebug.org/docs/all_settings#mode
             "mode": "debug"
         },
         // Misc
         "ghcr.io/automattic/vip-codespaces/mc:latest": {
-            // Set to true if you want to use Midnight Commander
+            // Set to true to enable Midnight Commander.
             "enabled": false
         },
         "ghcr.io/automattic/vip-codespaces/ssh:latest": {
-            // Set to true if you want an SSH server in your dev environment
+            // Set to true to enable an SSH server for the Codespaces environment.
             "enabled": false
         }
     },
