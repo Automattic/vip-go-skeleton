@@ -117,6 +117,13 @@
             "enabled": false
         }
     },
+    // *****************************
+    // *** Environment variables ***
+    // *****************************
+    "containerEnv": {
+    //  "MY_VAR": "example",
+    //  "MY_OTHER_VAR": "another example"
+    },
     "customizations": {
         "vscode": {
             "extensions": [
