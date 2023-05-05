@@ -85,6 +85,19 @@
             // Set to false to disable VIP-CLI.
             "enabled": true
         },
+        // Photon
+        "ghcr.io/automattic/vip-codespaces/photon:latest": {
+            // Set to false if you don't need Photon
+            "enabled": true,
+            // Set to false to enable image optimizations. This may slow down requests.
+            "disable_optimizations": true,
+            // Process images only if they have a query string in their URLs
+            // When set to true:
+            // * https://mysite.com/wp-content/uploads/image.jpg will not be processed
+            // * https://mysite.com/wp-content/uploads/image.jpg?w=100 will be processed
+            // When set to false, both images will be processed by Photon.
+            "only_images_with_qs": true
+        },
         // Elasticsearch
         "ghcr.io/automattic/vip-codespaces/elasticsearch:latest": {
             // Set to true to enable Elasticsearch. 
