@@ -2,6 +2,7 @@
     "name": "Test Dev Environment",
     "image": "ghcr.io/automattic/vip-codespaces/alpine-base:latest",
     "overrideCommand": false,
+    "waitFor": "onCreateCommand",
     "forwardPorts": [80, 81, 8025],
     "portsAttributes": {
         "80": {
