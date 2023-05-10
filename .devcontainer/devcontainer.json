@@ -107,6 +107,16 @@
             // Set to false to prevent Elasticsearch data from persisting between rebuilds.
             "installDataToWorkspaces": true
         },
+        // Cron
+        "ghcr.io/automattic/vip-codespaces/cron:latest": {
+            // Set to true to enable cron.
+            "enabled": false,
+            // Settings below are only used if "enabled" is set to true
+            // Set to true to run WordPress cron from system cron.
+            "run_wp_cron": true,
+            // Schedule to run WordPress cron. You can use https://crontab.guru/ to generate it. By default, WP cron will run every 15 minutes.
+            "wp_cron_schedule": "*/15 * * * *"
+        },
         // Tools
         "ghcr.io/automattic/vip-codespaces/mailpit:latest": {
             // Set to false to disable Mailpit.
