@@ -111,10 +111,10 @@
         "ghcr.io/automattic/vip-codespaces/cron:latest": {
             // Set to true to enable cron.
             "enabled": false,
-            // Settings below are only used if "enabled" is set to true
-            // Set to true to run WordPress cron from system cron.
+            // If system cron is enabled, additional settings are available.
+            // Set to false to cancel the creation of a system cron task that runs WordPress cron.
             "run_wp_cron": true,
-            // Schedule to run WordPress cron. You can use https://crontab.guru/ to generate it. By default, WP cron will run every 15 minutes.
+            // WordPress cron schedule. Refer to https://crontab.guru/ for cron schedule expressions.
             "wp_cron_schedule": "*/15 * * * *"
         },
         // Tools
