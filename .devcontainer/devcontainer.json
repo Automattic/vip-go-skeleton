@@ -71,8 +71,17 @@
             "nightly": false
         },
         "ghcr.io/automattic/vip-codespaces/vip-go-mu-plugins:latest": {
+            // Set to false to disable VIP Go mu-plugins (not recommended; only if you know what you are doing).
             "enabled": true,
-            "retainGit": false
+            // The branch to install vip-go-mu-plugins from. Accepts 'staging', 'production', or 'develop'.
+            "branch": "staging",
+            // Set to true to retain the .git directory in the mu-plugins directory.
+            // This can be useful if you want to contribute to the vip-go-mu-plugins repository.
+            "retain_git": false,
+            // Set to false if you don't want to delete development files from the mu-plugins directory.
+            // This can be useful if you want to contribute to the vip-go-mu-plugins repository.
+            // In this case, it makes sense to set "retain_git" to true.
+            "delete_unnecessary_files": true
         },
         "ghcr.io/automattic/vip-codespaces/dev-tools:latest": {},
         // *************************
