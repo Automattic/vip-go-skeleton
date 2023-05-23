@@ -88,7 +88,9 @@
         },
         "ghcr.io/automattic/vip-codespaces/vip-cli:latest": {
             // Set to false to disable VIP-CLI.
-            "enabled": true
+            "enabled": true,
+            // Which version of VIP-CLI to install. Accepts 'latest', 'next', or a version number (see https://www.npmjs.com/package/@automattic/vip?activeTab=versions).
+            "version": "latest"
         },
         // Photon
         "ghcr.io/automattic/vip-codespaces/photon:latest": {
