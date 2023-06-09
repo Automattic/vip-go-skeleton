@@ -166,7 +166,8 @@
                 "esbenp.prettier-vscode",
                 "timonwong.shellcheck",
                 "ms-azuretools.vscode-docker",
-                "zhiayang.tabindentspacealign"
+                "zhiayang.tabindentspacealign",
+                "automattic.logwatcher"
             ]
         }
     }
