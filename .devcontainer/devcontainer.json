@@ -167,7 +167,8 @@
                 "timonwong.shellcheck",
                 "ms-azuretools.vscode-docker",
                 "zhiayang.tabindentspacealign",
-                "automattic.logwatcher"
+                "automattic.logwatcher",
+                "emilast.LogFileHighlighter"
             ]
         }
     }
