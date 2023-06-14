@@ -2,7 +2,6 @@
     "name": "Test Dev Environment",
     "image": "ghcr.io/automattic/vip-codespaces/alpine-base:latest",
     "overrideCommand": false,
-    "waitFor": "onCreateCommand",
     "forwardPorts": [80, 81, 8025],
     "portsAttributes": {
         "80": {
@@ -36,8 +35,8 @@
             "onAutoForward": "notify"
         }
     },
+    "onCreateCommand": "/usr/local/bin/setup-wordpress.sh",
     "updateContentCommand": "composer install -n || true",
-    "postCreateCommand": "/usr/local/bin/setup-wordpress.sh",
     "features": {
         // *************************
         // *** Required features ***
