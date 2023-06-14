@@ -42,6 +42,7 @@
         // *************************
         // *** Required features ***
         // *************************
+        "ghcr.io/automattic/vip-codespaces/nginx:base": {},
         "ghcr.io/automattic/vip-codespaces/nginx:latest": {
             // Set to the URL of a VIP Platform site where requests for missing media files can be redirected.
             // Example: "mediaRedirectURL": "https://example.com"
