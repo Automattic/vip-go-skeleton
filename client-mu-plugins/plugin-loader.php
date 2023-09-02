@@ -20,3 +20,5 @@
  * For client-mu-plugins use:
  * require __DIR__ . '/plugin-name/plugin-name.php';
  */
+
+add_filter( 'wpvip_parsely_load_mu', '__return_true' );
