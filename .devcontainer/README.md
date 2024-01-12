@@ -1,11 +1,18 @@
-# Welcome to WordPress VIP Codespaces
+# Codespaces for WordPress VIP
+
+The provided `devcontainer.json` file is configured to create a Codespaces development environment that is as identical as possible to a VIP Platform environment.
+
+Read our documentation to learn how to get started and [work with Codespaces for WordPress VIP applications](https://docs.wpvip.com/local-development/developing-with-github-codespaces/).
+
+Refer to [GitHub's documentation for Codespaces](https://docs.github.com/en/codespaces) to learn more about Codespaces in general.
 
 ## Usage Notice
 
-WordPress VIP staff must explicitly grant access to for users to be able to run Codespaces under `wpcomvip` GitHub organization. This may or may not be available to you based on your plan. Please reach out to your account manager to find out whether you're eligible.
+Only customers with [Enhanced or Premier support packages](https://wpvip.com/pricing/) can use Codespaces within the `wpcomvip` GitHub organization.
 
-You're welcome to copy over the `.devcontainer/devcontainer.json` to the repository outside of `wpcomvip` organization.
+To work with Codespaces outside of the `wpcomvip` organization, customers can copy the `devcontainer.json` file into their own GitHub repository.
 
-For detailed instructions please refer to the [documentation](https://docs.wpvip.com/technical-references/developing-with-github-codespaces/).
+With proper permissions set up, starting a codespace in Browser is straightforward:
 
-Otherwise, simply click Code <> -> Codespaces -> Create codespace and start hacking.
+1. click Code <> -> Codespaces -> Create codespace
+2. Wait for the codespace to be initialized and built. Initial set up might take a few minutes, but this time may be significantly reduced by using prebuilt codespaces (configured on repository level)
