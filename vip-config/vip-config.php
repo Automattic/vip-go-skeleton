@@ -75,3 +75,14 @@ if ( ( ! defined( 'VIP_GO_APP_ENVIRONMENT' ) || ( defined( 'VIP_GO_APP_ENVIRONME
 	&& ! defined( 'WP_DEBUG' ) ) {
 	define( 'WP_DEBUG', true );
 }
+
+/**
+ * Disable Divi caching since VIP already supports page and object caching.
+ * 
+ * Divi caching can cause bloated media directory, let's just turn it off.
+ * 
+ * @see https://docs.wpvip.com/plugins/incompatibilities/#divi
+ */
+define( 'ET_DISABLE_FILE_BASED_CACHE', true );
+define( 'ET_BUILDER_CACHE_ASSETS', false );
+define( 'ET_BUILDER_CACHE_MODULES', false);
