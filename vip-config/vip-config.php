@@ -19,7 +19,7 @@
  **/
 
 /**
- * Set a high default limit to avoid too many revisions from polluting the database.
+ * Set a low default limit to avoid too many revisions from polluting the database.
  *
  * @see https://docs.wpvip.com/technical-references/vip-platform/post-revisions/
  *
