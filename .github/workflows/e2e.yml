@@ -43,8 +43,16 @@ jobs:
       - name: Install VIP CLI
         run: npm install -g @automattic/vip
 
+      - name: Create development environment
+        run: vip dev-env create --wordpress-version ${{ matrix.wordpress }} < /dev/null
+
+      - name: Start development environment
+        run: vip dev-env start --slug integration-demo
+
       - name: Run E2E tests
         run: npm test
+        env:
+          E2E_URL: http://integration-demo.vipdev.lndo.site/
 
       - name: Archive test results
         uses: actions/upload-artifact@834a144ee995460fba8ed112a2fc961b36a5ec5a # v4.3.6
