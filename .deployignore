@@ -1,33 +1,37 @@
 # Files and directories to exclude from deployment
 
+# Development and other files not needed in production
+.editorconfig
+.gitignore
+composer.json
+composer.lock
+readme.txt
+README.md
+LICENSE
+license.txt
+webpack.config.js
+
 # PHP CodeSniffer configs
+.phpcs.xml
 phpcs.xml
+.phpcs.xml.dist
 phpcs.xml.dist
 
 # PHPUnit test configs
 phpunit.xml
 phpunit.xml.dist
 
-# Editor config
-.editorconfig
-
 # Environment file (contains secrets)
 .env
 
-# Git repository
+# Development directories
+.cursor/
+.devcontainer/
 .git/
-
-# GitHub workflows
 .github/
-
-# VS Code settings
 .vscode/
-
-# Node dependencies
+.wpvip/
 node_modules/
-
-# Test files
 tests/
-
-# Documentation
 docs/
+/config/
