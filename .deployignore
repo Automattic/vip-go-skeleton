@@ -1,0 +1,33 @@
+# Files and directories to exclude from deployment
+
+# PHP CodeSniffer configs
+phpcs.xml
+phpcs.xml.dist
+
+# PHPUnit test configs
+phpunit.xml
+phpunit.xml.dist
+
+# Editor config
+.editorconfig
+
+# Environment file (contains secrets)
+.env
+
+# Git repository
+.git/
+
+# GitHub workflows
+.github/
+
+# VS Code settings
+.vscode/
+
+# Node dependencies
+node_modules/
+
+# Test files
+tests/
+
+# Documentation
+docs/
