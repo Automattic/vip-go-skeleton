@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Site Unavailable</title>
+	<style>
+		:root {
+			--background: radial-gradient(53.72% 53.72% at 50.00% 46.28%, #FCFAFA 0%, #F5F2F1 100%);
+			--background-inverse: radial-gradient(53.72% 53.72% at 50% 46.28%, #1B1918 0%, #080402 100%);
+			--border: #BFBCBB;
+			--border-inverse: #444140;
+			--text-primary: #13191E;
+			--text-secondary: #444140;
+			--text-primary-inverse: #FBFBFB;
+			--text-secondary-inverse: #D7D4D3;
+		}
+
+		body {
+			display: flex;
+			width: 100vw;
+			height: 100vh;
+			padding: clamp(1.00rem, calc(0.88rem + 0.60vw), 1.50rem);
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			box-sizing: border-box;
+			font-family: "Helvetica", "Helvetica Neue", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+			background: var(--background);
+			margin: 0;
+		}
+
+		section {
+			display: flex;
+			padding: clamp(1.00rem, calc(0.88rem + 0.60vw), 1.50rem);
+			max-width: 25rem;
+			flex-direction: column;
+			justify-content: center;
+			align-items: stretch;
+			gap: clamp(1.00rem, calc(0.88rem + 0.60vw), 1.50rem);
+			flex: 0 1 auto;
+			box-sizing: border-box;
+			border-radius: .5rem;
+			border: 1px solid var(--border);
+		}
+
+		h1 {
+			font-size: clamp(1.38rem, calc(1.08rem + 1.52vw), 2.64rem);
+			line-height: clamp(1.1em, calc(1.25em + -0.4vw), 1.2em);
+			letter-spacing: -0.01em;
+			color: var(--text-primary);
+			font-weight: 400;
+			margin: 0;
+		}
+
+		p {
+			margin: 0;
+			color: var(--text-secondary);
+			font-size: 1rem;
+			line-height: 140%;
+			font-weight: 400;
+		}
+
+		aside {
+			display: flex;
+			flex-direction: column;
+			align-items: stretch;
+			gap: clamp(0.75rem, calc(0.69rem + 0.30vw), 1.00rem);
+		}
+
+		small {
+			font-size: .875rem;
+			margin: 0;
+			color: var(--text-secondary);
+		}
+
+		hr {
+			margin: 0;
+			height: 1px;
+			border: 0;
+			border-top: 1px solid var(--border);
+		}
+
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--background: var(--background-inverse);
+				--border: var(--border-inverse);
+				--text-primary: var(--text-primary-inverse);
+				--text-secondary: var(--text-secondary-inverse);
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<section>
+		<h1>Site Unavailable</h1>
+		<p>An error occurred and this page can't be displayed. Please try again in a few minutes.</p>
+		<aside>
+			<hr>
+			<small>Error: SITE_UNAVAILABLE</small>
+		</aside>
+	</section>
+</body>
+
+</html>
+
