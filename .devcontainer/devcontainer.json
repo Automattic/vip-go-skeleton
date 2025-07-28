@@ -1,6 +1,6 @@
 {
     "name": "WordPress VIP Codespace",
-    "image": "ghcr.io/automattic/vip-codespaces/alpine-base:latest",
+    "image": "ghcr.io/automattic/vip-codespaces/ubuntu-base:latest",
     "overrideCommand": false,
     "forwardPorts": [80, 81, 8025],
     "portsAttributes": {
@@ -46,8 +46,8 @@
             "mediaRedirectURL": ""
         },
         "ghcr.io/automattic/vip-codespaces/php:latest": {
-            // PHP version options: 8.1, 8.2, 8.3
-            "version": "8.2",
+            // PHP version options: 8.1, 8.2, 8.3, 8.4
+            "version": "8.3",
             "composer": true
         },
         "ghcr.io/automattic/vip-codespaces/mariadb:latest": {
