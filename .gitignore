@@ -43,5 +43,8 @@ Thumbs.db
 .phpcs.xml
 phpcs.xml
 
+# Environment file (contains secrets)
+.env
+
 # Composer (repo root only)
 /vendor/
