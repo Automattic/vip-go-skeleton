@@ -12,7 +12,7 @@ We recommend starting with one of the following WordPress VIP guidebooks:
 
 ## AI coding agents
 
-[AGENTS.md](AGENTS.md) holds instructions for AI coding agents working in this repository: directory rules, which checks to run (and which to skip), and the VIP coding rules the Code Analysis Bot enforces. `CLAUDE.md` is a one-line pointer to it for Claude Code; keep all content in AGENTS.md.
+[AGENTS.md](AGENTS.md) covers task scope, focused checks, and essential VIP platform constraints for AI coding agents. `CLAUDE.md` points to it for Claude Code. Specialized recipes live in the optional [VIP platform reference](docs/vip-platform-reference.md).
 
 ## Directories
 
