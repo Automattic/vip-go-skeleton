@@ -7,8 +7,12 @@ Welcome to WordPress VIP! This repository is a starting point for building your 
 We recommend starting with one of the following WordPress VIP guidebooks:
 
 * [Get Started](https://docs.wpvip.com/guidebooks/get-started/)
-* [Development on WordPress VIP]([https://docs.wpvip.com/technical-references/development-workflow/](https://docs.wpvip.com/guidebooks/develop-on-wpvip/))
+* [Development on WordPress VIP](https://docs.wpvip.com/guidebooks/develop-on-wpvip/)
 * [Prepare for a Site Launch](https://docs.wpvip.com/guidebooks/prepare-for-launch/)
+
+## AI coding agents
+
+[AGENTS.md](AGENTS.md) covers task scope, focused checks, and essential VIP platform constraints for AI coding agents. `CLAUDE.md` points to it for Claude Code. Specialized recipes live in the optional [VIP platform reference](docs/vip-platform-reference.md).
 
 ## Directories
 
@@ -27,7 +31,7 @@ These directories will also be available on production web servers. Any addition
 
 For more information on how our codebase is structured, see https://docs.wpvip.com/technical-references/vip-codebase/. 
 
-The `docs/` directory is a special directory that contains your documentation for your application. It is not mounted onto your site, but is available for you to use. See [docs/index.php](docs/index.php) for more information.
+The `docs/` directory is a special directory that contains your documentation for your application. It is not mounted onto your site, but is available for you to use. See [docs/index.md](docs/index.md) for more information.
 
 ## PHPCS for checking coding standards
 
@@ -45,11 +49,19 @@ This will install PHPCS and register the below standards:
 
 The [`.phpcs.xml.dist`](https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/) file contains a _suggested_ configuration, but you are free to amend this. You can also [extend](https://docs.wpvip.com/technical-references/vip-codebase/phpcs-xml-dist/#h-extending-the-root-phpcs-xml-dist-file-for-custom-themes-and-plugins) it for more granularity of configuration for theme and custom plugins.
 
-To run PHPCS, navigate to the directory where the relevant `.phpcs.xml.dist` lives, and type:
+To run PHPCS, stay in the repository root and pass the path you want to check:
 
 ```sh
-vendor/bin/phpcs
+vendor/bin/phpcs themes/my-theme/
 ```
+
+For a theme or plugin with its own `.phpcs.xml.dist`, also pass that ruleset:
+
+```sh
+vendor/bin/phpcs --standard=themes/my-theme/.phpcs.xml.dist themes/my-theme/
+```
+
+Running `vendor/bin/phpcs` with no path scans every directory configured in the root `.phpcs.xml.dist`.
 
 See the [PHPCS documentation](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Usage) (or run `phpcs -h`) for the available command line arguments.
 

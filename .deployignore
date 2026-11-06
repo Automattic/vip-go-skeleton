@@ -7,6 +7,8 @@ composer.json
 composer.lock
 readme.txt
 README.md
+AGENTS.md
+CLAUDE.md
 LICENSE
 license.txt
 webpack.config.js
