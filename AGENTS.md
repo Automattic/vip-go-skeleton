@@ -1,13 +1,13 @@
 # Agent instructions
 
-This is the application-code layer of a WordPress VIP site, not a full WordPress installation. `CLAUDE.md` points here.
+This is the application-code layer of a WordPress VIP site, not a full WordPress installation.
 
 ## Keep work bounded
 
 - Follow the user's requested scope and the customer's existing project conventions. Do not treat the original skeleton layout or examples as a reason to reorganize an established repository.
 - Inspect the relevant code and configuration; do not inventory the whole repository or read every linked document. Use [VIP platform reference](docs/vip-platform-reference.md) only when a specific platform question needs it, and read only the relevant section. Links are resources, not a checklist.
 - Preserve unrelated user changes. Do not fix pre-existing warnings, reformat unrelated code, add tooling, tighten lint rules, or create plans/reports/docs unless the task needs them or the user asks.
-- Reuse available tools and environments. Install dependencies only if a necessary check requires them; provision a local WordPress environment only if runtime validation is needed. If tooling is unavailable, report the limitation instead of repeatedly trying setup alternatives.
+- Reuse available tools and environments. Install dependencies only if a necessary check requires them. When runtime validation is needed, use the [VIP Local Development Environment](https://docs.wpvip.com/vip-local-development-environment/) (`vip dev-env`), which runs VIP's platform MU plugins, rather than a generic WordPress setup; reuse an existing environment before creating one. If tooling is unavailable, report the limitation instead of repeatedly trying setup alternatives.
 - Once the requested work and relevant validation are complete, stop. Summarize the result and any material validation gap briefly. Do not add review rounds, CI polling, commits, PRs, merges, or deployments unless requested or already part of the authorized task.
 
 ## Platform boundaries
