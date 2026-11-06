@@ -10,6 +10,8 @@ Optional recipes for specific platform questions. Read only the relevant section
 
 Guard reads of `VIP_GO_APP_ENVIRONMENT` with `defined()` for non-VIP tests/local setups. Do not define that platform constant in application code.
 
+[Environment variable](https://docs.wpvip.com/infrastructure/environments/manage-environment-variables/) names cannot start with `WPCOM_`, `VIP_`, or `IS_VIP_`, or reuse a WordPress constant name such as `DB_NAME`. Values are strings, limited to 4096 bytes each and 16384 bytes for all of an environment's variables. Pass a default to `vip_get_env_var()` for variables that may be unset.
+
 ## Queries and remote requests
 
 Prefer bounded `WP_Query` calls; use `no_found_rows` when pagination is unnecessary. With `get_posts()`, set `suppress_filters` to `false`. Avoid unbounded queries, random SQL ordering, and high-volume counters in post meta.
@@ -27,6 +29,8 @@ Request options such as headers belong in the sixth argument, not the second. Ca
 ## Cache and asset changes
 
 Object-cache entries and transients may be evicted; they cannot hold the only copy of data. Keep entries below 1 MB. Transients are in the object cache, not `wp_options`; do not query the database for them. VIP does not support `wp_cache_flush_group()`; delete specific keys or version them.
+
+A response that sends `Set-Cookie` is not cached at the edge, so code that sets a cookie on every request turns off page caching for those pages.
 
 Deploys do not generally purge page/object caches. Handle existing cached-data formats. For new invalidation behavior, use targeted `wpvip_purge_edge_cache_for_url()` or the related post/term helpers. Custom post-type archives may need explicit purge coverage.
 
@@ -53,6 +57,14 @@ There is no application `.htaccess` or custom NGINX configuration. Upload URLs g
 VIP forces `WP_DEBUG_LOG` off. For runtime debugging, use existing Dashboard Runtime Logs or VIP CLI log access rather than searching for `debug.log`.
 
 A custom error page lives at `.wpvip/errors/site-unavailable.html`: self-contained HTML under 150 KB. CI builds must include `.wpvip/` rather than exclude it through `.deployignore`; enabling the page also requires a Dashboard setting.
+
+## Email
+
+Use `wp_mail()` only for low-volume mail to fixed recipients such as site admins. Do not send to user-supplied addresses or send bulk mail; [use a third-party email service](https://docs.wpvip.com/wordpress-on-vip/email/) for that. Attaching a VIP File System file requires `define( 'USE_VIP_PHPMAILER', true );` in `vip-config.php`.
+
+## Code Analysis Bot
+
+The bot scans files changed in open pull requests. Exclude vendored code and built-asset directories by listing one path per line in `.vipgoci_phpcs_skip_folders`, with a matching `<exclude-pattern>` in `.phpcs.xml.dist` for local runs. The bot's 15,000-line skip does not cover minified bundles, which are only a few long lines. Label pure vendored-code updates `skip-phpcs-scan`; PHP linting still runs.
 
 ## Further reference
 
